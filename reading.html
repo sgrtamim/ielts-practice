@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reading Practice | SGR Tamim IELTS</title>
+
+<title>SGR Tamim IELTS - Reading</title>
 
 <link rel="stylesheet" href="css/reading.css">
+
 </head>
 
 <body>
@@ -14,79 +18,71 @@
 
 <div class="logo">
 
-<h1>SGR Tamim IELTS</h1>
-
-<p>Cambridge-style IELTS Preparation</p>
+<h2>SGR Tamim IELTS</h2>
+<p>Academic Reading</p>
 
 </div>
 
-<nav>
+<div class="header-right">
 
-<a href="index.html">Home</a>
+<button id="zoomOut">A−</button>
+<button id="zoomReset">A</button>
+<button id="zoomIn">A+</button>
 
-<a href="reading.html" class="active">Reading</a>
+<div id="timer">
+30:00
+</div>
 
-</nav>
+</div>
 
 </header>
 
 <main>
 
-<section class="hero">
+<!-- LEFT -->
 
-<h2>Academic Reading Practice</h2>
+<section id="passageSection">
 
-<p>Select a reading test to begin.</p>
+<div class="sectionTitle">
+
+<h3>Reading Passage</h3>
+
+<input
+type="text"
+id="searchBox"
+placeholder="Search in passage...">
+
+</div>
+
+<div id="passage">
+
+Loading passage...
+
+</div>
 
 </section>
 
-<section class="test-grid">
+<div id="divider"></div>
 
-<div class="test-card">
+<!-- RIGHT -->
 
-<h3>Reading Test 1</h3>
+<section id="questionSection">
 
-<p>Topic: The Ice Cellars of Persia</p>
+<div class="sectionTitle">
 
-<p>Questions: 13</p>
+<h3>Questions</h3>
 
-<p>Difficulty: ⭐⭐⭐☆☆</p>
+<div id="questionPalette">
 
-<p>Recommended Time: 20 Minutes</p>
-
-<button onclick="startTest('tests/reading1.html')">
-
-Start Test
-
-</button>
+<!-- Generated automatically -->
 
 </div>
 
-<div class="test-card coming">
-
-<h3>Reading Test 2</h3>
-
-<p>Coming Soon</p>
-
-<button disabled>
-
-Coming Soon
-
-</button>
-
 </div>
 
-<div class="test-card coming">
+<div id="questions">
 
-<h3>Reading Test 3</h3>
-
-<p>Coming Soon</p>
-
-<button disabled>
-
-Coming Soon
-
-</button>
+Loading questions...
 
 </div>
 
@@ -94,53 +90,54 @@ Coming Soon
 
 </main>
 
-<div id="timerModal" class="modal">
+<footer>
 
-<div class="modal-content">
+<button id="previousBtn">
 
-<h2>Select Time</h2>
-
-<label><input type="radio" name="time" value="15">15 Minutes</label>
-
-<label><input type="radio" name="time" value="20">20 Minutes</label>
-
-<label><input type="radio" name="time" value="25">25 Minutes</label>
-
-<label><input type="radio" name="time" value="30" checked>30 Minutes</label>
-
-<button onclick="beginTest()">
-
-Start Test
+◀ Previous
 
 </button>
 
-</div>
+<button id="flagBtn">
+
+🚩 Flag
+
+</button>
+
+<div>
+
+Question
+
+<span id="currentQuestion">
+
+1
+
+</span>
 
 </div>
 
-<script>
+<button id="nextBtn">
 
-let nextPage="";
+Next ▶
 
-function startTest(page){
+</button>
 
-nextPage=page;
+<button id="submitBtn">
 
-document.getElementById("timerModal").style.display="flex";
+Submit Test
 
-}
+</button>
 
-function beginTest(){
+</footer>
 
-let time=document.querySelector('input[name="time"]:checked').value;
-
-localStorage.setItem("readingTime",time);
-
-window.location.href=nextPage;
-
-}
-
-</script>
+<script src="js/timer.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/highlight.js"></script>
+<script src="js/zoom.js"></script>
+<script src="js/autosave.js"></script>
+<script src="js/scoring.js"></script>
+<script src="js/reading.js"></script>
 
 </body>
+
 </html>
