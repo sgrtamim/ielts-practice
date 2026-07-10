@@ -733,3 +733,341 @@ function updateTimer(){
 updateTimer();
 
 const countdown = setInterval(updateTimer,1000);
+
+/* ===========================
+   SUBMIT TEST
+=========================== */
+
+document.getElementById("submitButton").addEventListener("click", function () {
+
+    if(confirm("Are you sure you want to submit your test?")){
+
+        clearInterval(countdown);
+
+        submitTest();
+
+    }
+
+});
+
+function submitTest(){
+
+    const answers=[];
+
+    /* TFNG */
+
+    document.querySelectorAll(".question").forEach((q,index)=>{
+
+        if(index<8){
+
+            const selected=q.querySelector(".selected");
+
+            answers.push(selected ? selected.innerText.trim() : "");
+
+        }
+
+    });
+
+    /* GAP FILL */
+
+    answers.push(document.getElementById("q9").value.trim().toLowerCase());
+
+    answers.push(document.getElementById("q10").value.trim().toLowerCase());
+
+    answers.push(document.getElementById("q11").value.trim().toLowerCase());
+
+    answers.push(document.getElementById("q12").value.trim().toLowerCase());
+
+    answers.push(document.getElementById("q13").value.trim().toLowerCase());
+
+    const correct=[
+
+        "TRUE",
+        "FALSE",
+        "FALSE",
+        "NOT GIVEN",
+        "TRUE",
+        "NOT GIVEN",
+        "FALSE",
+        "NOT GIVEN",
+
+        "ash",
+        "underground chamber",
+        "straw",
+        "fossil fuels",
+        "tourism"
+
+    ];
+
+    let score=0;
+
+    for(let i=0;i<8;i++){
+
+        if(answers[i].toUpperCase()==correct[i]){
+
+            score++;
+
+        }
+
+    }
+
+    for(let i=8;i<13;i++){
+
+        if(answers[i]==correct[i]){
+
+            score++;
+
+        }
+
+    }
+
+    showResults(score,answers,correct);
+
+}
+
+/* ===========================
+   RESULTS PAGE
+=========================== */
+
+function getBand(score){
+
+    if(score==13) return "9.0";
+    if(score>=12) return "8.5";
+    if(score>=11) return "8.0";
+    if(score>=10) return "7.5";
+    if(score>=9) return "7.0";
+    if(score>=8) return "6.5";
+    if(score>=7) return "6.0";
+    if(score>=6) return "5.5";
+    if(score>=5) return "5.0";
+    if(score>=4) return "4.5";
+    return "Below 4.5";
+
+}
+
+function showResults(score,answers,correct){
+
+    let percentage=Math.round((score/13)*100);
+
+    let html=`
+
+    <!DOCTYPE html>
+
+    <html>
+
+    <head>
+
+    <title>SGR Tamim IELTS Result</title>
+
+    <style>
+
+    body{
+
+        font-family:Arial,sans-serif;
+
+        background:#eef3f8;
+
+        padding:40px;
+
+        line-height:1.8;
+
+    }
+
+    .card{
+
+        background:white;
+
+        max-width:900px;
+
+        margin:auto;
+
+        border-radius:15px;
+
+        padding:30px;
+
+        box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+    }
+
+    h1{
+
+        color:#1565c0;
+
+        text-align:center;
+
+    }
+
+    .score{
+
+        text-align:center;
+
+        font-size:24px;
+
+        margin:25px 0;
+
+    }
+
+    .correct{
+
+        color:#2e7d32;
+
+        font-weight:bold;
+
+    }
+
+    .wrong{
+
+        color:#c62828;
+
+        font-weight:bold;
+
+    }
+
+    table{
+
+        width:100%;
+
+        border-collapse:collapse;
+
+        margin-top:30px;
+
+    }
+
+    td,th{
+
+        border:1px solid #ddd;
+
+        padding:10px;
+
+    }
+
+    th{
+
+        background:#1565c0;
+
+        color:white;
+
+    }
+
+    button{
+
+        margin-top:30px;
+
+        padding:12px 20px;
+
+        font-size:17px;
+
+        border:none;
+
+        border-radius:8px;
+
+        background:#1565c0;
+
+        color:white;
+
+        cursor:pointer;
+
+    }
+
+    </style>
+
+    </head>
+
+    <body>
+
+    <div class="card">
+
+    <h1>Reading Test Result</h1>
+
+    <div class="score">
+
+    <b>Score:</b> ${score}/13
+
+    <br><br>
+
+    <b>Percentage:</b> ${percentage}%
+
+    <br><br>
+
+    <b>Estimated IELTS Band:</b> ${getBand(score)}
+
+    </div>
+
+    <table>
+
+    <tr>
+
+    <th>Question</th>
+
+    <th>Your Answer</th>
+
+    <th>Correct Answer</th>
+
+    </tr>
+    `;
+
+    for(let i=0;i<13;i++){
+
+        let ok=false;
+
+        if(i<8){
+
+            ok=(answers[i].toUpperCase()==correct[i]);
+
+        }else{
+
+            ok=(answers[i]==correct[i]);
+
+        }
+
+        html+=`
+
+        <tr>
+
+        <td>${i+1}</td>
+
+        <td class="${ok?'correct':'wrong'}">
+
+        ${answers[i]||"(blank)"}
+
+        </td>
+
+        <td>${correct[i]}</td>
+
+        </tr>
+
+        `;
+
+    }
+
+    html+=`
+
+    </table>
+
+    <button onclick="window.print()">
+
+    Print Result
+
+    </button>
+
+    </div>
+
+    </body>
+
+    </html>
+
+    `;
+
+    let win=window.open("","_blank");
+
+    win.document.write(html);
+
+    win.document.close();
+
+}
+
+</script>
+
+</body>
+
+</html>
