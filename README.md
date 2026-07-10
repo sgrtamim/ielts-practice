@@ -1,2 +1,2 @@
-# reading-practice
+# ielts-practice
 You can practice reading module here
