@@ -197,7 +197,10 @@ alert("Your Score : "+score+" / "+test.answers.length);
 
 }
 
-fetch("data/reading1.json")
+const params = new URLSearchParams(window.location.search);
+const testName = params.get("test") || "reading1";
+
+fetch(`data/reading/${testName}.json`)
 
 .then(res=>res.json())
 
