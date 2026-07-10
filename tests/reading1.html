@@ -810,7 +810,7 @@ resultHTML += `
 
 }
 
-let newWindow = window.open();
+let newWindow = window.open("", "_blank");
 
 newWindow.document.write(`
 <html>
@@ -857,7 +857,6 @@ ${resultHTML}
 
 </html>
 `);
-
 }
   
 </script>
