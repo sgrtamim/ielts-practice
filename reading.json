@@ -1,0 +1,37 @@
+{
+  "title": "Reading Test 1",
+  "time": 20,
+
+  "passage": "<h2>The Ice Cellars of Persia</h2><p>Long before electricity made refrigeration commonplace, communities living in the hot, arid regions of Persia developed an ingenious method of preserving ice throughout the year...</p><p>Add the rest of your passage here.</p>",
+
+  "questions": [
+
+    {
+      "type":"tfng",
+      "number":1,
+      "question":"The earliest yakhchāls were constructed before the Common Era."
+    },
+
+    {
+      "type":"tfng",
+      "number":2,
+      "question":"Ice was produced inside the underground chamber."
+    },
+
+    {
+      "type":"gap",
+      "number":3,
+      "question":"The waterproof mixture contained ________.",
+      "placeholder":"Type answer"
+    }
+
+  ],
+
+  "answers":[
+
+    "TRUE",
+    "FALSE",
+    "ash"
+
+  ]
+}
