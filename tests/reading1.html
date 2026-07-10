@@ -858,7 +858,12 @@ ${resultHTML}
 </html>
 `);
 }
-  
+
+document.getElementById("submitButton").addEventListener("click", function () {
+    clearInterval(countdown);
+    submitTest();
+});
+
 </script>
 
 </body>
