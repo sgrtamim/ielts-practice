@@ -52,14 +52,16 @@ color:#0d47a1;
 
 .button{
 display:block;
-text-decoration:none;
+width:100%;
 background:#1565c0;
 color:white;
 padding:15px;
 margin:12px 0;
+border:none;
 border-radius:10px;
 text-align:center;
 font-size:18px;
+cursor:pointer;
 transition:.3s;
 }
 
@@ -99,17 +101,51 @@ margin-top:40px;
 
 <a href="#" class="button">📚 Vocabulary</a>
 
-</div>
-
 <div class="card">
 
 <h2>Latest Reading Tests</h2>
 
-<p>✅ Reading Test 1</p>
+<h3>📖 Reading Test 1</h3>
 
-<p>✅ Reading Test 2</p>
+<label>Choose Time</label>
 
-<p>✅ Reading Test 3</p>
+<select id="time-reading1">
+
+<option value="15">15 Minutes</option>
+<option value="20">20 Minutes</option>
+<option value="25">25 Minutes</option>
+<option value="30" selected>30 Minutes</option>
+<option value="60">60 Minutes</option>
+
+</select>
+
+<br><br>
+
+<button class="button" onclick="startTest('reading1','time-reading1')">
+Start Test
+</button>
+
+<hr>
+
+<h3>📖 Reading Test 2</h3>
+
+<label>Choose Time</label>
+
+<select id="time-reading2">
+
+<option value="15">15 Minutes</option>
+<option value="20">20 Minutes</option>
+<option value="25">25 Minutes</option>
+<option value="30" selected>30 Minutes</option>
+<option value="60">60 Minutes</option>
+
+</select>
+
+<br><br>
+
+<button class="button" onclick="startTest('reading2','time-reading2')">
+Start Test
+</button>
 
 </div>
 
@@ -120,6 +156,20 @@ margin-top:40px;
 © 2026 SGR Tamim IELTS
 
 </footer>
+
+<script>
+
+function startTest(testName, selectId){
+
+    const minutes = document.getElementById(selectId).value;
+
+    localStorage.setItem("readingTime", minutes);
+
+    window.location.href = "reading.html?test=" + testName;
+
+}
+
+</script>
 
 </body>
 
