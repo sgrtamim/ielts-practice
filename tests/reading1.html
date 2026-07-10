@@ -656,8 +656,77 @@ answers.push(document.getElementById("q13").value.trim().toLowerCase());
 
 console.log(answers);
 
-alert("Answers saved successfully!");
+/* ================= Correct Answers ================= */
 
+const correct=[
+
+"TRUE",
+
+"FALSE",
+
+"FALSE",
+
+"NOT GIVEN",
+
+"TRUE",
+
+"NOT GIVEN",
+
+"FALSE",
+
+"NOT GIVEN",
+
+"ash",
+
+"underground chamber",
+
+"straw",
+
+"fossil fuels",
+
+"tourism"
+
+];
+
+let score=0;
+
+/* Check TFNG */
+
+for(let i=0;i<8;i++){
+
+if(answers[i].toUpperCase()==correct[i]){
+
+score++;
+
+}
+
+}
+
+/* Check Gap Fill */
+
+for(let i=8;i<13;i++){
+
+if(answers[i]==correct[i]){
+
+score++;
+
+}
+
+}
+
+alert(
+
+"Your Score: "
+
++
+
+score
+
++
+
+" / 13"
+
+);
 }
   
 </script>
