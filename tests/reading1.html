@@ -1,42 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SGR Tamim IELTS | Reading Test 1</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#eef3f8;
+height:100vh;
+overflow:hidden;
+}
+
+/* ================= HEADER ================= */
+
+header{
+
+height:70px;
+
+background:#0d47a1;
+
+color:white;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 20px;
+
+box-shadow:0 2px 10px rgba(0,0,0,.2);
+
+}
+
+header h2{
+
+font-size:24px;
+
+}
+
+#timer{
+
+font-size:22px;
+
+font-weight:bold;
+
+background:#1565c0;
+
+padding:10px 18px;
+
+border-radius:8px;
+
+}
+
+/* ================= LAYOUT ================= */
+
+.container{
+
+display:flex;
+
+height:calc(100vh - 130px);
+
+}
+
+/* Passage */
+
+#passage{
+
+width:50%;
+
+overflow-y:auto;
+
+background:white;
+
+padding:25px;
+
+font-size:18px;
+
+line-height:1.9;
+
+border-right:5px solid #d6d6d6;
+
+}
+
+/* Resize Bar */
+
+#resize{
+
+width:8px;
+
+background:#c6c6c6;
+
+cursor:col-resize;
+
+}
+
+/* Questions */
+
+#questions{
+
+flex:1;
+
+overflow-y:auto;
+
+background:#f7f7f7;
+
+padding:25px;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+height:60px;
+
+background:white;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 20px;
+
+box-shadow:0 -2px 10px rgba(0,0,0,.15);
+
+}
+
+footer button{
+
+border:none;
+
+background:#1565c0;
+
+color:white;
+
+padding:12px 20px;
+
+border-radius:8px;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+footer button:hover{
+
+background:#0d47a1;
+
+}
+
+#submitButton{
+
+background:#2e7d32;
+
+font-weight:bold;
+
+}
+
+#submitButton:hover{
+
+background:#1b5e20;
+
+}
+
+/* ================= QUESTION CARD ================= */
+
+.question{
+
+background:white;
+
+padding:20px;
+
+margin-bottom:20px;
+
+border-radius:10px;
+
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.question p{
+
+font-size:18px;
+
+line-height:1.8;
+
+}
+
+.tfng{
+
+padding:10px 18px;
+
+margin-top:15px;
+
+margin-right:10px;
+
+border:none;
+
+border-radius:30px;
+
+background:#e6eef9;
+
+color:#0d47a1;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+.tfng.selected{
+
+background:#1565c0;
+
+color:white;
+
+}
+
+input[type=text]{
+
+width:180px;
+
+padding:10px;
+
+font-size:17px;
+
+border:2px solid #1565c0;
+
+border-radius:8px;
+
+}
+
+/* Scrollbars */
+
+#passage::-webkit-scrollbar,
+
+#questions::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+#passage::-webkit-scrollbar-thumb,
+
+#questions::-webkit-scrollbar-thumb{
+
+background:#1565c0;
+
+border-radius:20px;
+
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+
+.container{
+
+flex-direction:column;
+
+}
+
+#passage{
+
+width:100%;
+
+height:45%;
+
+border-right:none;
+
+border-bottom:4px solid #ddd;
+
+}
+
+#resize{
+
+display:none;
+
+}
+
+#questions{
+
+height:55%;
+
+}
+
+}
+
+</style>
+
+</head>
+
 <body>
 
-<header class="topbar">
+<header>
 
-<div class="left">
 <h2>SGR Tamim IELTS</h2>
-<span class="test-name">Reading Test 1</span>
-</div>
-
-<div class="middle">
-
-<button id="zoomOut">A−</button>
-
-<button id="zoomReset">A</button>
-
-<button id="zoomIn">A+</button>
-
-</div>
-
-<div class="right">
 
 <div id="timer">30:00</div>
 
-</div>
-
 </header>
 
-<div class="main-layout">
+<div class="container">
 
-<!-- ================= PASSAGE ================= -->
-
-<div class="passage-panel">
-
-<div class="panel-header">
-
-<h3>Reading Passage</h3>
-
-<button id="highlightBtn">Highlight</button>
-
-</div>
-
-<div id="passage" class="panel-body">
+<div id="passage">
