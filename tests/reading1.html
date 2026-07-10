@@ -626,7 +626,37 @@ const countdown=setInterval(updateTimer,1000);
 
 function submitTest(){
 
-alert("Submitting test...");
+let answers=[];
+
+/* TRUE/FALSE/NOT GIVEN */
+
+document.querySelectorAll(".question").forEach((q,index)=>{
+
+let selected=q.querySelector(".selected");
+
+if(index<8){
+
+answers.push(selected?selected.innerText:"");
+
+}
+
+});
+
+/* Gap Fill */
+
+answers.push(document.getElementById("q9").value.trim().toLowerCase());
+
+answers.push(document.getElementById("q10").value.trim().toLowerCase());
+
+answers.push(document.getElementById("q11").value.trim().toLowerCase());
+
+answers.push(document.getElementById("q12").value.trim().toLowerCase());
+
+answers.push(document.getElementById("q13").value.trim().toLowerCase());
+
+console.log(answers);
+
+alert("Answers saved successfully!");
 
 }
   
