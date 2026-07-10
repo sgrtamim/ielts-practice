@@ -1,126 +1,99 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SGR Tamim IELTS - Reading</title>
+<title>SGR IELTS Reading</title>
 
 <link rel="stylesheet" href="css/reading.css">
-
 </head>
 
 <body>
 
 <header>
 
-<div class="logo">
+<div class="left">
+<h2 id="testTitle">Reading Test</h2>
+</div>
 
-<h2>SGR Tamim IELTS</h2>
-<p>Academic Reading</p>
+<div class="middle">
+<span id="timer">30:00</span>
+</div>
+
+<div class="right">
+
+<div class="zoomBox">
+
+<b>Passage</b>
+
+<button id="passageMinus">A-</button>
+
+<button id="passagePlus">A+</button>
 
 </div>
 
-<div class="header-right">
+<div class="zoomBox">
 
-<button id="zoomOut">A−</button>
-<button id="zoomReset">A</button>
-<button id="zoomIn">A+</button>
+<b>Questions</b>
 
-<div id="timer">
-30:00
+<button id="questionMinus">A-</button>
+
+<button id="questionPlus">A+</button>
+
 </div>
 
 </div>
 
 </header>
 
-<main>
 
-<!-- LEFT -->
 
-<section id="passageSection">
+<div id="mainContainer">
 
-<div class="sectionTitle">
+<div id="passagePanel">
 
-<h3>Reading Passage</h3>
+<div class="panelHeader">
 
-<input
-type="text"
-id="searchBox"
-placeholder="Search in passage...">
+<h3>Passage</h3>
 
 </div>
 
-<div id="passage">
+<div id="passageContent">
 
 Loading passage...
 
 </div>
 
-</section>
+</div>
+
+
 
 <div id="divider"></div>
 
-<!-- RIGHT -->
 
-<section id="questionSection">
 
-<div class="sectionTitle">
+<div id="questionPanel">
+
+<div class="panelHeader">
 
 <h3>Questions</h3>
 
-<div id="questionPalette">
-
-<!-- Generated automatically -->
-
 </div>
 
-</div>
-
-<div id="questions">
+<div id="questionContent">
 
 Loading questions...
 
 </div>
 
-</section>
-
-</main>
-
-<footer>
-
-<button id="previousBtn">
-
-◀ Previous
-
-</button>
-
-<button id="flagBtn">
-
-🚩 Flag
-
-</button>
-
-<div>
-
-Question
-
-<span id="currentQuestion">
-
-1
-
-</span>
+</div>
 
 </div>
 
-<button id="nextBtn">
 
-Next ▶
 
-</button>
+<div id="submitBar">
 
 <button id="submitBtn">
 
@@ -128,16 +101,11 @@ Submit Test
 
 </button>
 
-</footer>
+</div>
 
-<script src="js/timer.js"></script>
-<script src="js/navigation.js"></script>
-<script src="js/highlight.js"></script>
-<script src="js/zoom.js"></script>
-<script src="js/autosave.js"></script>
-<script src="js/scoring.js"></script>
+
+
 <script src="js/reading.js"></script>
 
 </body>
-
 </html>
