@@ -1,3 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Practice | SGR Tamim IELTS</title>
+
+<link rel="stylesheet" href="css/reading.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+<h1>SGR Tamim IELTS</h1>
+
+<p>Cambridge-style IELTS Preparation</p>
+
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="reading.html" class="active">Reading</a>
+
+</nav>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<h2>Academic Reading Practice</h2>
+
+<p>Select a reading test to begin.</p>
+
+</section>
+
+<section class="test-grid">
+
+<div class="test-card">
+
+<h3>Reading Test 1</h3>
+
+<p>Topic: The Ice Cellars of Persia</p>
+
+<p>Questions: 13</p>
+
+<p>Difficulty: ⭐⭐⭐☆☆</p>
+
+<p>Recommended Time: 20 Minutes</p>
+
+<button onclick="startTest('tests/reading1.html')">
+
+Start Test
+
+</button>
+
+</div>
+
+<div class="test-card coming">
+
+<h3>Reading Test 2</h3>
+
+<p>Coming Soon</p>
+
+<button disabled>
+
+Coming Soon
+
+</button>
+
+</div>
+
+<div class="test-card coming">
+
+<h3>Reading Test 3</h3>
+
+<p>Coming Soon</p>
+
+<button disabled>
+
+Coming Soon
+
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+<div id="timerModal" class="modal">
+
+<div class="modal-content">
+
+<h2>Select Time</h2>
+
+<label><input type="radio" name="time" value="15">15 Minutes</label>
+
+<label><input type="radio" name="time" value="20">20 Minutes</label>
+
+<label><input type="radio" name="time" value="25">25 Minutes</label>
+
+<label><input type="radio" name="time" value="30" checked>30 Minutes</label>
+
+<button onclick="beginTest()">
+
+Start Test
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+let nextPage="";
+
+function startTest(page){
+
+nextPage=page;
+
+document.getElementById("timerModal").style.display="flex";
+
+}
+
+function beginTest(){
+
+let time=document.querySelector('input[name="time"]:checked').value;
+
+localStorage.setItem("readingTime",time);
+
+window.location.href=nextPage;
+
+}
+
+</script>
+
+</body>
 </html>
