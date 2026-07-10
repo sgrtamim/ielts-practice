@@ -242,3 +242,93 @@ p.classList.remove("answered");
 ========================== */
 
 loadTest();
+
+/* ===========================
+   AUTO SAVE ANSWERS
+=========================== */
+
+const STORAGE_KEY = "reading_answers_" + TEST.id;
+
+function saveAnswers(){
+
+    const data = {};
+
+    document.querySelectorAll(".question").forEach((q,index)=>{
+
+        const selected = q.querySelector(".selected");
+
+        const input = q.querySelector("input");
+
+        if(selected){
+
+            data[index+1] = selected.innerText;
+
+        }
+
+        if(input){
+
+            data[index+1] = input.value;
+
+        }
+
+    });
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
+}
+
+function restoreAnswers(){
+
+    const saved = JSON.parse(
+        localStorage.getItem(STORAGE_KEY)
+    );
+
+    if(!saved) return;
+
+    Object.keys(saved).forEach(number=>{
+
+        const question =
+        document.getElementById("q"+number);
+
+        if(!question) return;
+
+        const input =
+        question.querySelector("input");
+
+        if(input){
+
+            input.value = saved[number];
+
+        }
+
+        const buttons =
+        question.querySelectorAll(".tfng");
+
+        buttons.forEach(btn=>{
+
+            if(btn.innerText==saved[number]){
+
+                btn.classList.add("selected");
+
+            }
+
+        });
+
+    });
+
+    markAnswered();
+
+}
+
+/* Save automatically */
+
+document.addEventListener("click",saveAnswers);
+
+document.addEventListener("keyup",saveAnswers);
+
+/* Restore on page load */
+
+restoreAnswers();
