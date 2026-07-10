@@ -3,116 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reading Practice | SGR Tamim IELTS</title>
+<title>Reading Test 1 | SGR Tamim IELTS</title>
 
-<link rel="stylesheet" href="css/reading.css">
+<link rel="stylesheet" href="../css/reading.css">
+
+<style>
+html,body{
+height:100%;
+margin:0;
+font-family:Arial,sans-serif;
+background:#eef3f8;
+overflow:hidden;
+}
+
+header{
+height:70px;
+background:#0d47a1;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 20px;
+}
+
+header h2{
+margin:0;
+}
+
+#timer{
+font-size:22px;
+font-weight:bold;
+}
+
+.container{
+display:flex;
+height:calc(100vh - 70px);
+}
+
+#passage{
+width:50%;
+overflow-y:auto;
+background:white;
+padding:25px;
+border-right:4px solid #d6d6d6;
+}
+
+#resize{
+width:8px;
+background:#bdbdbd;
+cursor:col-resize;
+}
+
+#questions{
+flex:1;
+overflow-y:auto;
+background:#f8f8f8;
+padding:25px;
+}
+
+@media(max-width:900px){
+
+.container{
+flex-direction:column;
+}
+
+#passage{
+width:100%;
+height:45%;
+border-right:none;
+border-bottom:4px solid #ddd;
+}
+
+#resize{
+display:none;
+}
+
+#questions{
+height:55%;
+}
+
+}
+</style>
+
 </head>
 
 <body>
 
 <header>
 
-<div class="logo">
+<h2>Reading Test 1</h2>
 
-<h1>SGR Tamim IELTS</h1>
-
-<p>Cambridge-style IELTS Preparation</p>
-
-</div>
-
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="reading.html" class="active">Reading</a>
-
-</nav>
+<div id="timer">30:00</div>
 
 </header>
 
-<main>
+<div class="container">
 
-<section class="hero">
+<div id="passage">
 
-<h2>Academic Reading Practice</h2>
+<h2>The Ice Cellars of Persia</h2>
 
-<p>Select a reading test to begin.</p>
-
-</section>
-
-<section class="test-grid">
-
-<div class="test-card">
-
-<h3>Reading Test 1</h3>
-
-<p>Topic: The Ice Cellars of Persia</p>
-
-<p>Questions: 13</p>
-
-<p>Difficulty: ⭐⭐⭐☆☆</p>
-
-<p>Recommended Time: 20 Minutes</p>
-
-<button onclick="startTest('tests/reading1.html')">
-
-Start Test
-
-</button>
+<p><b>The passage will be added in Part 2.</b></p>
 
 </div>
 
-<div class="test-card coming">
+<div id="resize"></div>
 
-<h3>Reading Test 2</h3>
+<div id="questions">
 
-<p>Coming Soon</p>
+<h2>Questions</h2>
 
-<button disabled>
-
-Coming Soon
-
-</button>
-
-</div>
-
-<div class="test-card coming">
-
-<h3>Reading Test 3</h3>
-
-<p>Coming Soon</p>
-
-<button disabled>
-
-Coming Soon
-
-</button>
-
-</div>
-
-</section>
-
-</main>
-
-<div id="timerModal" class="modal">
-
-<div class="modal-content">
-
-<h2>Select Time</h2>
-
-<label><input type="radio" name="time" value="15">15 Minutes</label>
-
-<label><input type="radio" name="time" value="20">20 Minutes</label>
-
-<label><input type="radio" name="time" value="25">25 Minutes</label>
-
-<label><input type="radio" name="time" value="30" checked>30 Minutes</label>
-
-<button onclick="beginTest()">
-
-Start Test
-
-</button>
+<p><b>The questions will be added in Part 3.</b></p>
 
 </div>
 
@@ -120,25 +121,37 @@ Start Test
 
 <script>
 
-let nextPage="";
+const resize=document.getElementById("resize");
 
-function startTest(page){
+const left=document.getElementById("passage");
 
-nextPage=page;
+let active=false;
 
-document.getElementById("timerModal").style.display="flex";
+resize.addEventListener("mousedown",()=>{
 
-}
+active=true;
 
-function beginTest(){
+});
 
-let time=document.querySelector('input[name="time"]:checked').value;
+document.addEventListener("mouseup",()=>{
 
-localStorage.setItem("readingTime",time);
+active=false;
 
-window.location.href=nextPage;
+});
 
-}
+document.addEventListener("mousemove",(e)=>{
+
+if(!active)return;
+
+let width=e.clientX/window.innerWidth*100;
+
+if(width<25)width=25;
+
+if(width>75)width=75;
+
+left.style.width=width+"%";
+
+});
 
 </script>
 
