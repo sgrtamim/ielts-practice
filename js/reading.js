@@ -1,226 +1,157 @@
-/* ===========================
-   SGR Tamim IELTS
-   Reading Engine
-=========================== */
+// =============================
+// FONT SIZE
+// =============================
 
-let currentQuestion = 1;
+let passageFont = 18;
+let questionFont = 18;
 
-const totalQuestions = 13;
+const passage = document.getElementById("passageContent");
+const questions = document.getElementById("questionContent");
 
-const palette = document.getElementById("questionPalette");
+document.getElementById("passagePlus").onclick = () => {
+    passageFont += 2;
+    passage.style.fontSize = passageFont + "px";
+};
 
-const currentQuestionText =
-document.getElementById("currentQuestion");
-
-/* ===========================
-   CREATE QUESTION PALETTE
-=========================== */
-
-function createPalette(){
-
-    palette.innerHTML="";
-
-    for(let i=1;i<=totalQuestions;i++){
-
-        const btn=document.createElement("button");
-
-        btn.className="paletteBtn";
-
-        btn.innerHTML=i;
-
-        btn.dataset.question=i;
-
-        btn.onclick=()=>goToQuestion(i);
-
-        palette.appendChild(btn);
-
+document.getElementById("passageMinus").onclick = () => {
+    if (passageFont > 12) {
+        passageFont -= 2;
+        passage.style.fontSize = passageFont + "px";
     }
+};
 
-    updatePalette();
+document.getElementById("questionPlus").onclick = () => {
+    questionFont += 2;
+    questions.style.fontSize = questionFont + "px";
+};
 
-}
-
-/* ===========================
-   UPDATE PALETTE
-=========================== */
-
-function updatePalette(){
-
-    document
-    .querySelectorAll(".paletteBtn")
-    .forEach(btn=>{
-
-        btn.classList.remove("current");
-
-        if(Number(btn.dataset.question)==currentQuestion){
-
-            btn.classList.add("current");
-
-        }
-
-    });
-
-}
-
-/* ===========================
-   GO TO QUESTION
-=========================== */
-
-function goToQuestion(number){
-
-    currentQuestion=number;
-
-    currentQuestionText.innerHTML=number;
-
-    updatePalette();
-
-    const questions=
-    document.querySelectorAll(".question");
-
-    if(questions[number-1]){
-
-        questions[number-1]
-        .scrollIntoView({
-
-            behavior:"smooth",
-
-            block:"center"
-
-        });
-
+document.getElementById("questionMinus").onclick = () => {
+    if (questionFont > 12) {
+        questionFont -= 2;
+        questions.style.fontSize = questionFont + "px";
     }
+};
 
-}
 
-/* ===========================
-   NEXT
-=========================== */
+// =============================
+// DRAG DIVIDER
+// =============================
 
-document
-.getElementById("nextBtn")
-.onclick=function(){
+const divider = document.getElementById("divider");
+const leftPanel = document.getElementById("passagePanel");
 
-    if(currentQuestion<totalQuestions){
+let dragging = false;
 
-        currentQuestion++;
+divider.addEventListener("mousedown", () => {
+    dragging = true;
+});
 
-        goToQuestion(currentQuestion);
+document.addEventListener("mouseup", () => {
+    dragging = false;
+});
 
-    }
+document.addEventListener("mousemove", (e) => {
 
-}
+    if (!dragging) return;
 
-/* ===========================
-   PREVIOUS
-=========================== */
+    let width = (e.clientX / window.innerWidth) * 100;
 
-document
-.getElementById("previousBtn")
-.onclick=function(){
+    if (width < 25) width = 25;
+    if (width > 75) width = 75;
 
-    if(currentQuestion>1){
-
-        currentQuestion--;
-
-        goToQuestion(currentQuestion);
-
-    }
-
-}
-
-/* ===========================
-   FLAG
-=========================== */
-
-document
-.getElementById("flagBtn")
-.onclick=function(){
-
-    const btn=
-    document.querySelector(
-
-        `.paletteBtn[data-question="${currentQuestion}"]`
-
-    );
-
-    btn.classList.toggle("flagged");
-
-}
-
-/* ===========================
-   MARK ANSWERED
-=========================== */
-
-function markAnswered(){
-
-    const questions=
-    document.querySelectorAll(".question");
-
-    questions.forEach((q,index)=>{
-
-        let answered=false;
-
-        const selected=
-        q.querySelector(".selected");
-
-        if(selected){
-
-            answered=true;
-
-        }
-
-        const input=
-        q.querySelector("input");
-
-        if(input){
-
-            if(input.value.trim()!=""){
-
-                answered=true;
-
-            }
-
-        }
-
-        const paletteBtn=
-        document.querySelector(
-
-`.paletteBtn[data-question="${index+1}"]`
-
-        );
-
-        if(answered){
-
-            paletteBtn.classList.add("answered");
-
-        }else{
-
-            paletteBtn.classList.remove("answered");
-
-        }
-
-    });
-
-}
-
-/* ===========================
-   LISTENERS
-=========================== */
-
-document.addEventListener("click",()=>{
-
-    markAnswered();
+    leftPanel.style.width = width + "%";
 
 });
 
-document.addEventListener("keyup",()=>{
 
-    markAnswered();
+// =============================
+// TIMER
+// =============================
+
+let totalSeconds = 30 * 60;
+
+const timer = document.getElementById("timer");
+
+function updateTimer() {
+
+    let m = Math.floor(totalSeconds / 60);
+
+    let s = totalSeconds % 60;
+
+    timer.innerHTML =
+        String(m).padStart(2, "0") +
+        ":" +
+        String(s).padStart(2, "0");
+
+    if (totalSeconds == 300) {
+
+        alert("Only 5 minutes remaining");
+
+    }
+
+    if (totalSeconds == 60) {
+
+        alert("Only 1 minute remaining");
+
+    }
+
+    if (totalSeconds <= 0) {
+
+        clearInterval(countdown);
+
+        submitTest();
+
+    }
+
+    totalSeconds--;
+
+}
+
+updateTimer();
+
+const countdown = setInterval(updateTimer, 1000);
+
+
+// =============================
+// TFNG BUTTONS
+// =============================
+
+document.addEventListener("click", function(e){
+
+    if(!e.target.classList.contains("tfng")) return;
+
+    let group = e.target.parentElement.querySelectorAll(".tfng");
+
+    group.forEach(btn=>btn.classList.remove("selected"));
+
+    e.target.classList.add("selected");
 
 });
 
-/* ===========================
-   START
-=========================== */
 
-createPalette();
+// =============================
+// SUBMIT
+// =============================
+
+document.getElementById("submitBtn").onclick=function(){
+
+let ok=confirm("Are you sure you want to submit the test?");
+
+if(ok){
+
+submitTest();
+
+}
+
+};
+
+
+// =============================
+// SUBMIT FUNCTION
+// =============================
+
+function submitTest(){
+
+alert("Result system coming in Part 4");
+
+}
