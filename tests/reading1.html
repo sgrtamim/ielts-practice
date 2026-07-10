@@ -252,7 +252,7 @@ color:black;
 
 <h2>Reading Test 1</h2>
 
-<div id="timer">30:00</div>
+<div id="timer">Loading...</div>
 
 </header>
 
@@ -571,6 +571,64 @@ this.classList.add("selected");
 });
 
 });
+
+/* ===========================
+   IELTS Countdown Timer
+=========================== */
+
+let minutes = parseInt(localStorage.getItem("readingTime")) || 30;
+
+let totalSeconds = minutes * 60;
+
+const timer = document.getElementById("timer");
+
+function updateTimer(){
+
+let mins = Math.floor(totalSeconds / 60);
+
+let secs = totalSeconds % 60;
+
+timer.innerHTML =
+String(mins).padStart(2,"0") + ":" +
+String(secs).padStart(2,"0");
+
+if(totalSeconds===300){
+
+alert("⚠ Only 5 minutes remaining.");
+
+}
+
+if(totalSeconds===60){
+
+alert("⚠ Only 1 minute remaining.");
+
+}
+
+if(totalSeconds<=0){
+
+clearInterval(countdown);
+
+alert("Time is over. Your test has been submitted.");
+
+submitTest();
+
+return;
+
+}
+
+totalSeconds--;
+
+}
+
+updateTimer();
+
+const countdown=setInterval(updateTimer,1000);
+
+function submitTest(){
+
+alert("Submitting test...");
+
+}
   
 </script>
 
