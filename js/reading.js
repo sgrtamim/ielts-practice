@@ -1,3 +1,5 @@
+let test;
+
 // =============================
 // FONT SIZE
 // =============================
@@ -152,6 +154,115 @@ submitTest();
 
 function submitTest(){
 
-alert("Result system coming in Part 4");
+let score=0;
+
+const answers=[];
+
+/* TFNG */
+
+document.querySelectorAll(".question").forEach(q=>{
+
+let selected=q.querySelector(".selected");
+
+if(selected){
+
+answers.push(selected.innerText);
+
+}else{
+
+let input=q.querySelector("input");
+
+answers.push(input ? input.value.trim().toLowerCase() : "");
 
 }
+
+});
+
+
+for(let i=0;i<answers.length;i++){
+
+let user=answers[i];
+
+let correct=test.answers[i];
+
+if(user.toString().toLowerCase()==correct.toString().toLowerCase()){
+
+score++;
+
+}
+
+}
+
+alert("Your Score : "+score+" / "+test.answers.length);
+
+}
+
+fetch("data/reading1.json")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+test=data;
+
+document.getElementById("testTitle").innerHTML=data.title;
+
+totalSeconds=data.time*60;
+
+passage.innerHTML=data.passage;
+
+const container=document.getElementById("questionContent");
+
+container.innerHTML="";
+
+data.questions.forEach(q=>{
+
+let html="";
+
+if(q.type=="tfng"){
+
+html=`
+
+<div class="question">
+
+<p><b>${q.number}.</b> ${q.question}</p>
+
+<button class="tfng">TRUE</button>
+
+<button class="tfng">FALSE</button>
+
+<button class="tfng">NOT GIVEN</button>
+
+</div>
+
+`;
+
+}
+
+if(q.type=="gap"){
+
+html=`
+
+<div class="question">
+
+<p>
+
+<b>${q.number}.</b>
+
+${q.question.replace("________",
+
+`<input type="text">`)}
+
+</p>
+
+</div>
+
+`;
+
+}
+
+container.innerHTML+=html;
+
+});
+
+});
