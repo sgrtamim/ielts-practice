@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">p
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -556,6 +556,21 @@ left.style.width=width+"%";
 
 });
 
+/* ---------- TFNG Button Selection ---------- */
+
+document.querySelectorAll(".tfng").forEach(button=>{
+
+button.addEventListener("click",function(){
+
+let group=this.parentElement.querySelectorAll(".tfng");
+
+group.forEach(btn=>btn.classList.remove("selected"));
+
+this.classList.add("selected");
+
+});
+
+});
   
 </script>
 
