@@ -183,7 +183,7 @@ for(let i=0;i<answers.length;i++){
 
 let user=answers[i];
 
-let correct=test.answers[i];
+let correct=testData.answers[i];
 
 if(user.toString().toLowerCase()==correct.toString().toLowerCase()){
 
