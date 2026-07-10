@@ -714,18 +714,80 @@ score++;
 
 }
 
-alert(
+let resultHTML = `
+<h2>Your Score: ${score}/13</h2>
+<hr>
+`;
 
-"Your Score: "
+const explanations = [
 
-+
+{
+answer:"TRUE",
+why:"The passage states that Persian builders had mastered these techniques by the fifth century BC."
+},
 
-score
+{
+answer:"FALSE",
+why:"Ice formed in shallow pools beside the yakhchāl, not inside the underground chamber."
+},
 
-+
+{
+answer:"FALSE",
+why:"The walls cast shadows to reduce solar heating."
+},
 
-" / 13"
+{
+answer:"NOT GIVEN",
+why:"The passage never says the builders learned from neighbouring civilizations."
+},
 
+{
+answer:"TRUE",
+why:"The passage explains that the earth below the surface remains cooler than the air above."
+},
+
+{
+answer:"NOT GIVEN",
+why:"The passage does not say how the surviving yakhchāls are used today."
+},
+
+{
+answer:"FALSE",
+why:"The passage says conservation teams repaired the domes."
+},
+
+{
+answer:"NOT GIVEN",
+why:"It only says visitor numbers must be managed. It never mentions a law."
+},
+
+{
+answer:"ash",
+why:"The waterproof mixture included clay, sand, ash, lime, egg whites and goat hair."
+},
+
+{
+answer:"underground chamber",
+why:"Ice was stored in a deep underground chamber."
+},
+
+{
+answer:"straw",
+why:"Straw separated each layer of ice."
+},
+
+{
+answer:"fossil fuels",
+why:"Yakhchāls required no fossil fuels."
+},
+
+{
+answer:"tourism",
+why:"The passage warns that excessive tourism may damage the structures."
+}
+
+];
+  
 );
 }
   
