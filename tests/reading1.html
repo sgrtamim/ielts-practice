@@ -380,3 +380,356 @@ Today, the yakhchāls of Persia are increasingly recognised not simply as archae
 
 <div id="questions">
 
+<h2>Questions 1–8</h2>
+
+<p>
+<b>Do the following statements agree with the information given in the Reading Passage?</b>
+</p>
+
+<p>
+Choose <b>TRUE</b>, <b>FALSE</b> or <b>NOT GIVEN</b>.
+</p>
+
+<hr><br>
+
+<!-- Question 1 -->
+
+<div class="question">
+
+<p>
+
+<b>1.</b> The earliest yakhchāls were constructed before the start of the Common Era.
+
+</p>
+
+<button class="tfng">TRUE</button>
+
+<button class="tfng">FALSE</button>
+
+<button class="tfng">NOT GIVEN</button>
+
+</div>
+
+<!-- Question 2 -->
+
+<div class="question">
+
+<p>
+
+<b>2.</b> Ice was produced by allowing water to freeze inside the underground storage chamber.
+
+</p>
+
+<button class="tfng">TRUE</button>
+
+<button class="tfng">FALSE</button>
+
+<button class="tfng">NOT GIVEN</button>
+
+</div>
+
+<!-- Question 3 -->
+
+<div class="question">
+
+<p>
+
+<b>3.</b> The walls beside the freezing pools were built to maximise exposure to sunlight during the day.
+
+</p>
+
+<button class="tfng">TRUE</button>
+
+<button class="tfng">FALSE</button>
+
+<button class="tfng">NOT GIVEN</button>
+
+</div>
+
+<!-- Question 4 -->
+
+<div class="question">
+
+<p>
+
+<b>4.</b> The builders of yakhchāls learnt their construction methods from neighbouring civilizations.
+
+</p>
+
+<button class="tfng">TRUE</button>
+
+<button class="tfng">FALSE</button>
+
+<button class="tfng">NOT GIVEN</button>
+
+</div>
+
+<!-- Question 5 -->
+
+<div class="question">
+
+<p>
+
+<b>5.</b> The underground chambers were cooler than the air above the surface because they were built below ground.
+
+</p>
+
+<button class="tfng">TRUE</button>
+
+<button class="tfng">FALSE</button>
+
+<button class="tfng">NOT GIVEN</button>
+
+</div>
+
+<!-- Question 6 -->
+
+<div class="question">
+
+<p>
+
+<b>6.</b> Most surviving yakhchāls are now used for storing food by local communities.
+
+</p>
+
+<button class="tfng">TRUE</button>
+
+<button class="tfng">FALSE</button>
+
+<button class="tfng">NOT GIVEN</button>
+
+</div>
+
+<!-- Question 7 -->
+
+<div class="question">
+
+<p>
+
+<b>7.</b> Local residents were responsible for repairing most of the damaged domes.
+
+</p>
+
+<button class="tfng">TRUE</button>
+
+<button class="tfng">FALSE</button>
+
+<button class="tfng">NOT GIVEN</button>
+
+</div>
+
+<!-- Question 8 -->
+
+<div class="question">
+
+<p>
+
+<b>8.</b> Visitor numbers at restored yakhchāls are limited by law throughout Iran.
+
+</p>
+
+<button class="tfng">TRUE</button>
+
+<button class="tfng">FALSE</button>
+
+<button class="tfng">NOT GIVEN</button>
+
+</div>
+
+<br><hr><br>
+
+<h2>Questions 9–13</h2>
+
+<p><b>Complete the summary below.</b></p>
+
+<p>Choose <b>NO MORE THAN TWO WORDS</b> from the passage.</p>
+
+<div class="question">
+
+<p>
+
+The walls of a yakhchāl were built using a waterproof mixture that included materials such as clay and
+
+<input type="text" id="q9">
+
+.
+
+</p>
+
+</div>
+
+<div class="question">
+
+<p>
+
+Beneath the dome was a large
+
+<input type="text" id="q10">
+
+where ice could be preserved for long periods.
+
+</p>
+
+</div>
+
+<div class="question">
+
+<p>
+
+During winter, sheets of ice were separated with
+
+<input type="text" id="q11">
+
+before being stored.
+
+</p>
+
+</div>
+
+<div class="question">
+
+<p>
+
+Today, experts consider yakhchāls valuable because they operated without consuming
+
+<input type="text" id="q12">
+
+.
+
+</p>
+
+</div>
+
+<div class="question">
+
+<p>
+
+However, conservationists must ensure that increasing
+
+<input type="text" id="q13">
+
+does not damage these historic structures.
+
+</p>
+
+</div>
+
+<br><br>
+
+<button id="submitButton">
+
+Submit Test
+
+</button>
+
+</div>
+
+</div>
+
+<footer>
+
+<button id="prevBtn">
+
+◀ Previous
+
+</button>
+
+<div>
+
+SGR Tamim IELTS
+
+</div>
+
+<button id="nextBtn">
+
+Next ▶
+
+</button>
+
+</footer>
+
+<script>
+
+/* ===========================
+   PASSAGE RESIZER
+=========================== */
+
+const resize = document.getElementById("resize");
+const passage = document.getElementById("passage");
+
+let resizing = false;
+
+resize.addEventListener("mousedown", () => {
+    resizing = true;
+});
+
+document.addEventListener("mouseup", () => {
+    resizing = false;
+});
+
+document.addEventListener("mousemove", (e) => {
+
+    if (!resizing) return;
+
+    let width = (e.clientX / window.innerWidth) * 100;
+
+    if (width < 25) width = 25;
+    if (width > 75) width = 75;
+
+    passage.style.width = width + "%";
+
+});
+
+/* ===========================
+   TRUE/FALSE BUTTONS
+=========================== */
+
+document.querySelectorAll(".tfng").forEach(button => {
+
+    button.addEventListener("click", function(){
+
+        const group = this.parentElement.querySelectorAll(".tfng");
+
+        group.forEach(btn => btn.classList.remove("selected"));
+
+        this.classList.add("selected");
+
+    });
+
+});
+
+/* ===========================
+   TIMER
+=========================== */
+
+let totalSeconds = 30 * 60;
+
+const timer = document.getElementById("timer");
+
+function updateTimer(){
+
+    let mins = Math.floor(totalSeconds / 60);
+
+    let secs = totalSeconds % 60;
+
+    timer.innerHTML =
+        String(mins).padStart(2,"0") + ":" +
+        String(secs).padStart(2,"0");
+
+    if(totalSeconds <= 0){
+
+        clearInterval(countdown);
+
+        submitTest();
+
+        return;
+
+    }
+
+    totalSeconds--;
+
+}
+
+updateTimer();
+
+const countdown = setInterval(updateTimer,1000);
