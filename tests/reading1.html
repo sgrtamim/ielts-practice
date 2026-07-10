@@ -787,6 +787,78 @@ why:"The passage warns that excessive tourism may damage the structures."
 }
 
 ];
+
+for(let i=0;i<13;i++){
+
+let user = answers[i];
+
+let correct = explanations[i].answer;
+
+let mark = user==correct ? "✅" : "❌";
+
+resultHTML += `
+<hr>
+
+<h3>Question ${i+1} ${mark}</h3>
+
+<p><b>Your Answer:</b> ${user || "(blank)"}</p>
+
+<p><b>Correct Answer:</b> ${correct}</p>
+
+<p>${explanations[i].why}</p>
+`;
+
+}
+
+let newWindow = window.open();
+
+newWindow.document.write(`
+<html>
+
+<head>
+
+<title>Results</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+
+padding:30px;
+
+line-height:1.8;
+
+background:#f5f5f5;
+
+}
+
+h2{
+
+color:#1d5fbf;
+
+}
+
+hr{
+
+margin:20px 0;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+${resultHTML}
+
+</body>
+
+</html>
+`);
+
+
   
 );
 }
