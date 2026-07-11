@@ -179,3 +179,11 @@ addDoc(collection(db,"readingTests"),data)
     alert("❌ Failed to publish test.");
 
 });
+
+document.addEventListener("click", function(e){
+
+if(!e.target.classList.contains("delete")) return;
+
+e.target.parentElement.remove();
+
+});
