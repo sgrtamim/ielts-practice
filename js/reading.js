@@ -70,7 +70,9 @@ document.addEventListener("mousemove", (e) => {
 // TIMER
 // =============================
 
-let totalSeconds = 30 * 60;
+let minutes = Number(localStorage.getItem("readingTime")) || 30;
+
+let totalSeconds = minutes * 60;
 
 const timer = document.getElementById("timer");
 
