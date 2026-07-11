@@ -233,15 +233,36 @@ window.location.href = "result.html";
 }
 
 const params = new URLSearchParams(window.location.search);
-const testName = params.get("test") || "reading1";
+const testId = params.get("id");
 
-fetch(`data/reading/${testName}.json`)
+loadTest(testId);
 
-.then(res=>res.json())
+async function loadTest(id){
 
-.then(data=>{
+    const snap = await getDoc(doc(db,"readingTests",id));
 
-testData=data;
+    if(!snap.exists()){
+
+        alert("Test not found.");
+
+        return;
+
+    }
+
+    const data = snap.data();
+
+    testData = data;
+
+    document.getElementById("testTitle").innerHTML = data.title;
+
+    passage.innerHTML = data.passage;
+
+    const container = document.getElementById("questionContent");
+
+    container.innerHTML = "";
+
+    // Keep your existing code here that creates the questions
+}
 
 document.getElementById("testTitle").innerHTML=data.title;
 
