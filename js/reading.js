@@ -223,7 +223,7 @@ const container=document.getElementById("questionContent");
 
 container.innerHTML="";
 
-data.questions.forEach(q=>{id
+data.questions.forEach(q=>{
 
 let html="";
 
