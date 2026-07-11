@@ -1,35 +1,32 @@
 fetch("data/reading/tests.json")
-.then(res=>res.json())
-.then(tests=>{
+.then(r=>r.json())
+.then(data=>{
 
-const list=document.getElementById("readingTests");
+document.getElementById("totalTests").innerText=data.length;
 
-list.innerHTML="";
+const list=document.getElementById("testList");
 
-tests.forEach(test=>{
+data.forEach(test=>{
 
 list.innerHTML+=`
 
-<div style="border:1px solid #ddd;
-padding:15px;
-margin-top:15px;
-border-radius:10px;">
+<div class="card">
 
 <h3>${test.title}</h3>
 
-<p>
-Questions: ${test.questions}
-</p>
+<p>${test.questions} Questions</p>
 
-<p>
-Difficulty: ${test.difficulty}
-</p>
+<p>${test.difficulty}</p>
 
-<button
-class="button"
-onclick="window.open('reading.html?test=${test.id}')">
+<button onclick="location.href='reading.html?test=${test.id}'">
 
 Preview
+
+</button>
+
+<button onclick="location.href='admin.html?id=${test.id}'">
+
+Edit
 
 </button>
 
