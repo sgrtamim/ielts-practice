@@ -1,36 +1,87 @@
 {
-  "title": "Reading Test 1",
+  "title": "The Secret Life of Urban Trees",
   "time": 30,
-
-  "passage": "<h2>The Ice Cellars of Persia</h2><p>Long before electricity made refrigeration commonplace, communities living in the hot, arid regions of Persia developed an ingenious method of preserving ice throughout the year...</p><p>Add the rest of your passage here.</p>",
-
+  "passage": "<h2>The Secret Life of Urban Trees</h2><p><b>A</b><br>For much of modern history, cities have been regarded as places where nature survives only in isolated parks and gardens. Trees growing beside roads, in residential streets or around office buildings were generally considered decorative rather than essential. However, recent research suggests that urban trees play a far more significant role than previously believed. Besides improving the appearance of cities, they influence air quality, local temperatures, biodiversity and even the physical and mental health of residents.</p><p><b>B</b><br>One of the most noticeable effects of urban trees is their ability to reduce the temperature of surrounding areas. During hot summer days, concrete and asphalt absorb large amounts of solar energy, creating what scientists call the 'urban heat island' effect. Tree canopies provide shade while their leaves release water vapour through a natural process known as transpiration. Together, these processes help cool the air. Studies have shown that streets lined with mature trees can be several degrees cooler than nearby streets with little vegetation.</p><p><b>C</b><br>Trees also contribute to cleaner air, although the extent of this benefit depends on several factors. Their leaves capture tiny airborne particles produced by traffic and industrial activity, preventing some of these pollutants from remaining suspended in the atmosphere. Certain gases are also absorbed through leaf surfaces. Nevertheless, experts point out that poorly planned planting schemes can sometimes reduce air circulation, allowing pollutants to accumulate in narrow streets. Consequently, the species selected and their location are important considerations in urban planning.</p><p><b>D</b><br>The value of city trees extends beyond environmental benefits. Researchers investigating public health have found that people living in greener neighbourhoods often report lower levels of stress and greater satisfaction with their surroundings. Some studies have also linked access to green spaces with increased physical activity because residents are more likely to walk or cycle in attractive environments. Although these findings suggest a relationship between trees and improved well-being, scientists acknowledge that many social and economic factors may also influence these outcomes.</p><p><b>E</b><br>Urban trees provide habitats for numerous forms of wildlife. Birds, insects and small mammals frequently rely on them for food, shelter and breeding sites. Surprisingly, some rare species have adapted successfully to city environments after losing suitable habitats elsewhere. However, urban ecosystems differ greatly from natural forests. Artificial lighting, noise and limited space mean that not every species can survive, and some trees require regular maintenance to remain healthy.</p><p><b>F</b><br>Despite their many advantages, maintaining urban trees involves considerable expense. Young trees require watering during dry periods, while mature specimens must be inspected regularly for disease or structural damage that could pose risks to pedestrians and nearby buildings. Climate change has created additional challenges, including more frequent heatwaves, prolonged droughts and the spread of unfamiliar pests. For this reason, many cities now favour a mixture of tree species rather than relying heavily on a single variety, reducing the likelihood that one disease could destroy large numbers of trees at once.</p><p><b>G</b><br>Today, urban forestry is increasingly recognised as an essential part of sustainable city planning rather than a luxury. Instead of focusing only on planting more trees, planners are paying greater attention to selecting appropriate species, ensuring sufficient soil space and considering the long-term needs of both people and wildlife. As scientific understanding continues to develop, the role of urban trees is likely to become even more important in creating healthier and more resilient cities.</p>",
   "questions": [
-
     {
-      "type":"tfng",
-      "number":1,
-      "question":"The earliest yakhchāls were constructed before the Common Era."
+      "number": 1,
+      "type": "tfng",
+      "question": "In the past, trees growing in urban areas were valued mainly for the way they looked."
     },
-
     {
-      "type":"tfng",
-      "number":2,
-      "question":"Ice was produced inside the underground chamber."
+      "number": 2,
+      "type": "tfng",
+      "question": "The cooling effect produced by urban trees is achieved through two natural processes working together."
     },
-
     {
-      "type":"gap",
-      "number":3,
-      "question":"The waterproof mixture contained ________.",
-      "placeholder":"Type answer"
+      "number": 3,
+      "type": "tfng",
+      "question": "Streets containing mature trees are always cooler than every nearby street without trees."
+    },
+    {
+      "number": 4,
+      "type": "tfng",
+      "question": "The effectiveness of trees in reducing air pollution is influenced by where they are planted."
+    },
+    {
+      "number": 5,
+      "type": "tfng",
+      "question": "Scientists have established that living near trees directly improves people's mental health."
+    },
+    {
+      "number": 6,
+      "type": "tfng",
+      "question": "Green neighbourhoods encourage some residents to spend more time travelling on foot or by bicycle."
+    },
+    {
+      "number": 7,
+      "type": "tfng",
+      "question": "The research discussed included neighbourhoods from every continent."
+    },
+    {
+      "number": 8,
+      "type": "tfng",
+      "question": "Residents living near parks are generally healthier than those living in areas without trees."
+    },
+    {
+      "number": 9,
+      "type": "gap",
+      "question": "Urban trees support a wide range of wildlife by supplying food, ________ and places for reproduction."
+    },
+    {
+      "number": 10,
+      "type": "gap",
+      "question": "Maintaining healthy trees requires regular inspections because disease and structural problems may create risks for ________."
+    },
+    {
+      "number": 11,
+      "type": "gap",
+      "question": "Many cities now plant a ________ of tree species so that one disease cannot destroy them all."
+    },
+    {
+      "number": 12,
+      "type": "gap",
+      "question": "Modern urban forestry also places greater emphasis on choosing suitable species and providing enough ________."
+    },
+    {
+      "number": 13,
+      "type": "gap",
+      "question": "Scientists expect urban trees to play an increasingly important role in building more ________ cities."
     }
-
   ],
-
-  "answers":[
-
+  "answers": [
+    "TRUE",
     "TRUE",
     "FALSE",
-    "ash"
-
+    "TRUE",
+    "FALSE",
+    "TRUE",
+    "NOT GIVEN",
+    "NOT GIVEN",
+    "shelter",
+    "pedestrians",
+    "mixture",
+    "soil space",
+    "resilient"
   ]
+}
