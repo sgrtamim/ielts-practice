@@ -567,3 +567,12 @@ document.getElementById("highlightBtn").addEventListener("click", () => {
     }
 
 });
+
+function saveHighlights(){
+
+    localStorage.setItem(
+        "highlight_" + testData.title,
+        passage.innerHTML
+    );
+
+}
