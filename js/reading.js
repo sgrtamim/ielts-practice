@@ -165,7 +165,18 @@ async function loadTest(fileName) {
         document.getElementById("testTitle").textContent =
             testData.title;
 
-        passage.innerHTML = testData.passage;
+        const savedHighlight =
+localStorage.getItem("highlight_" + testData.title);
+
+if(savedHighlight){
+
+    passage.innerHTML = savedHighlight;
+
+}else{
+
+    passage.innerHTML = testData.passage;
+
+}
 
         const selectedTime =
 Number(localStorage.getItem("readingTime"));
