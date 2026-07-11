@@ -58,4 +58,16 @@ Start Test
 
 }
 
+function startTest(id){
+
+    const time =
+        document.getElementById("time-" + id).value;
+
+    localStorage.setItem("readingTime", time);
+
+    window.location.href =
+        `reading.html?id=${id}`;
+
+}
+
 loadTests();
