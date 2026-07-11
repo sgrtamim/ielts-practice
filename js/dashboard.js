@@ -1,55 +1,44 @@
-async function loadTests() {
+async function loadTests(){
 
-    try {
+const response=await fetch("data/reading/tests.json");
 
-        const response =
-            await fetch("data/reading/tests.json");
+const tests=await response.json();
 
-        const tests =
-            await response.json();
+const list=document.getElementById("testList");
 
-        const list =
-            document.getElementById("testList");
+list.innerHTML="";
 
-        list.innerHTML = "";
+tests.forEach(test=>{
 
-        tests.forEach(test => {
+list.innerHTML+=`
 
-            list.innerHTML += `
+<div class="testCard">
 
-            <div class="testCard">
+<h3>${test.title}</h3>
 
-                <h2>${test.title}</h2>
+<div class="meta">
 
-                <p>${test.time} Minutes</p>
+Reading Test<br>
 
-                <button
-                onclick="startTest('${test.id}')">
+Time: ${test.time} minutes
 
-                Start Test
+</div>
 
-                </button>
+<button
 
-            </div>
+class="startBtn"
 
-            `;
+onclick="location.href='reading.html?id=${test.id}'">
 
-        });
+Start Test
 
-    }
+</button>
 
-    catch (err) {
+</div>
 
-        console.error(err);
+`;
 
-    }
-
-}
-
-function startTest(id) {
-
-    window.location.href =
-        `reading.html?id=${id}`;
+});
 
 }
 
