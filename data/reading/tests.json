@@ -1,20 +1,12 @@
 [
   {
     "id": "reading1",
-    "title": "Reading Test 1",
-    "questions": 13,
-    "difficulty": "Easy"
+    "title": "The Secret Life of Urban Trees",
+    "time": 30
   },
   {
     "id": "reading2",
-    "title": "Reading Test 2",
-    "questions": 13,
-    "difficulty": "Medium"
-  },
-  {
-    "id": "reading3",
-    "title": "Reading Test 3",
-    "questions": 14,
-    "difficulty": "Hard"
+    "title": "History of Glass",
+    "time": 30
   }
 ]
