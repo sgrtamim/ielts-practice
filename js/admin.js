@@ -92,16 +92,18 @@ data.answers.push(answer);
 
 });
 
-const json=JSON.stringify(data,null,2);
+addDoc(collection(db,"readingTests"),data)
 
-const blob=new Blob([json],{type:"application/json"});
+.then(()=>{
 
-const link=document.createElement("a");
+    alert("✅ Test published successfully!");
 
-link.href=URL.createObjectURL(blob);
+})
 
-link.download="reading1.json";
+.catch(error=>{
 
-link.click();
+    console.error(error);
 
-};
+    alert("❌ Failed to publish test.");
+
+});
