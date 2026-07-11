@@ -187,3 +187,167 @@ async function loadTest(fileName) {
     }
 
 }
+
+// =========================================
+// BUILD QUESTIONS
+// =========================================
+
+function buildQuestions() {
+
+    questionContent.innerHTML = "";
+    navigatorBox.innerHTML = "";
+
+    testData.questions.forEach(q => {
+
+        // Navigator Button
+
+        navigatorBox.innerHTML += `
+            <button
+                class="navBtn"
+                id="nav${q.number}"
+                onclick="goQuestion(${q.number})">
+
+                ${q.number}
+
+            </button>
+        `;
+
+        let html = "";
+
+        // TRUE FALSE NOT GIVEN
+
+        if (q.type === "tfng") {
+
+            html = `
+
+            <div class="question">
+
+                <p>
+
+                    <b>${q.number}.</b>
+
+                    ${q.question}
+
+                </p>
+
+                <div class="btnGroup">
+
+                    <button class="tfng">TRUE</button>
+
+                    <button class="tfng">FALSE</button>
+
+                    <button class="tfng">NOT GIVEN</button>
+
+                </div>
+
+            </div>
+
+            `;
+
+        }
+
+        // GAP FILL
+
+        if (q.type === "gap") {
+
+            html = `
+
+            <div class="question">
+
+                <p>
+
+                    <b>${q.number}.</b>
+
+                    ${q.question.replace(
+                        "________",
+                        `<input
+                            type="text"
+                            class="gapInput"
+                            autocomplete="off">`
+                    )}
+
+                </p>
+
+            </div>
+
+            `;
+
+        }
+
+        questionContent.innerHTML += html;
+
+    });
+
+    restoreAnswers();
+
+}
+
+
+// =========================================
+// RESTORE ANSWERS
+// =========================================
+
+function restoreAnswers() {
+
+    document.querySelectorAll(".question").forEach((question, index) => {
+
+        const saved = localStorage.getItem("answer_" + index);
+
+        if (!saved) return;
+
+        const input = question.querySelector("input");
+
+        if (input) {
+
+            input.value = saved;
+
+            document
+                .getElementById("nav" + (index + 1))
+                .classList.add("answered");
+
+        }
+
+        else {
+
+            question.querySelectorAll(".tfng").forEach(btn => {
+
+                if (btn.innerText === saved) {
+
+                    btn.classList.add("selected");
+
+                    document
+                        .getElementById("nav" + (index + 1))
+                        .classList.add("answered");
+
+                }
+
+            });
+
+        }
+
+    });
+
+}
+
+
+// =========================================
+// QUESTION NAVIGATION
+// =========================================
+
+function goQuestion(number) {
+
+    const q = document.querySelectorAll(".question")[number - 1];
+
+    if (!q) return;
+
+    q.scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "center"
+
+    });
+
+}
+
+window.goQuestion = goQuestion;
