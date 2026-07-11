@@ -223,7 +223,24 @@ const container=document.getElementById("questionContent");
 
 container.innerHTML="";
 
+const nav=document.getElementById("navigator");
+
+nav.innerHTML="";
+
 data.questions.forEach(q=>{
+
+nav.innerHTML+=`
+
+<button
+class="navBtn"
+id="nav${q.number}"
+onclick="goQuestion(${q.number})">
+
+${q.number}
+
+</button>
+
+`;
 
 let html="";
 
@@ -274,3 +291,15 @@ container.innerHTML+=html;
 });
 
 });
+
+function goQuestion(number){
+
+const question=document.querySelectorAll(".question")[number-1];
+
+question.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
