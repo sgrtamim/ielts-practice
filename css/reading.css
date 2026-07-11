@@ -246,3 +246,35 @@ color:white;
 background:#2e7d32;
 color:white;
 }
+
+#highlightBtn{
+
+    background:#ffd54f;
+
+    border:none;
+
+    padding:10px 16px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    margin-right:15px;
+
+}
+
+#highlightBtn:hover{
+
+    background:#ffca28;
+
+}
+
+mark{
+
+    background:#fff176;
+
+    padding:2px;
+
+}
