@@ -179,6 +179,68 @@ function startTest(testName, selectId){
 
 </script>
 
+<script>
+
+fetch("data/reading/tests.json")
+
+.then(res=>res.json())
+
+.then(tests=>{
+
+const list=document.getElementById("readingList");
+
+list.innerHTML="";
+
+tests.forEach(test=>{
+
+list.innerHTML+=`
+
+<div style="border:1px solid #ddd;padding:15px;border-radius:10px;margin-bottom:15px;">
+
+<h3>${test.title}</h3>
+
+<p>${test.questions} Questions</p>
+
+<p>Difficulty: ${test.difficulty}</p>
+
+<select id="${test.id}">
+
+<option value="15">15 Minutes</option>
+<option value="20">20 Minutes</option>
+<option value="25">25 Minutes</option>
+<option value="30" selected>30 Minutes</option>
+<option value="60">60 Minutes</option>
+
+</select>
+
+<button class="button"
+
+onclick="startTest('${test.id}','${test.id}')">
+
+Start Test
+
+</button>
+
+</div>
+
+`;
+
+});
+
+});
+
+function startTest(testName,selectId){
+
+const minutes=document.getElementById(selectId).value;
+
+localStorage.setItem("readingTime",minutes);
+
+window.location.href="reading.html?test="+testName;
+
+}
+
+</script>
+
 </body>
 
 </html>
