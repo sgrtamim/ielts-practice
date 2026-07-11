@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Result</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f7fb;
+padding:40px;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+text-align:center;
+}
+
+h1{
+color:#1565c0;
+}
+
+.score{
+font-size:50px;
+font-weight:bold;
+margin:20px 0;
+}
+
+.band{
+font-size:30px;
+color:#2e7d32;
+margin-bottom:20px;
+}
+
+button{
+padding:15px 30px;
+border:none;
+background:#1565c0;
+color:white;
+font-size:18px;
+border-radius:8px;
+cursor:pointer;
+margin:10px;
+}
+
+button:hover{
+background:#0d47a1;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Your Result</h1>
+
+<div class="score" id="score">0 / 13</div>
+
+<div class="band" id="band">Band 0.0</div>
+
+<button onclick="location.href='index.html'">
+Home
+</button>
+
+<button onclick="history.back()">
+Review Test
+</button>
+
+</div>
+
+<script src="js/result.js"></script>
+
+</body>
+</html>
