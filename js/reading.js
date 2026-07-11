@@ -214,6 +214,12 @@ score++;
 localStorage.setItem("score", score);
 localStorage.setItem("total", testData.answers.length);
 
+for(let i = 0; i < testData.answers.length; i++){
+
+    localStorage.removeItem("answer_" + i);
+
+}
+
 window.location.href = "result.html";
 
 }
