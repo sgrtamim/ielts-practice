@@ -1,0 +1,87 @@
+{
+  "title": "The Forgotten Science of Natural Dyes",
+  "time": 30,
+  "passage": "<h2>The Forgotten Science of Natural Dyes</h2><p><b>A</b><br>For thousands of years, humans have used substances found in nature to colour fabrics, tools and personal belongings. Before the development of synthetic dyes in the nineteenth century, almost every coloured textile was produced using materials obtained from plants, animals or minerals. Although natural dyes were gradually replaced by cheaper artificial alternatives, researchers and designers have recently renewed their interest in these traditional colouring methods. This revival is not simply based on nostalgia; it is also connected to concerns about environmental sustainability and the long-term effects of industrial chemical production.</p><p><b>B</b><br>The process of creating natural dyes is considerably more complex than many people assume. Different parts of a plant, including roots, leaves, bark and flowers, can produce completely different colours depending on the season, growing conditions and preparation techniques. Even when the same plant species is used, the final colour may vary due to differences in soil composition or climate. As a result, traditional dyers often developed detailed knowledge of local resources, passing their techniques from one generation to another.</p><p><b>C</b><br>One of the reasons synthetic dyes became dominant was their consistency. Industrial manufacturers could produce large quantities of fabric with exactly the same colour, something that was difficult to achieve with natural materials. However, this advantage came with environmental costs. Some synthetic dye industries have been associated with the release of polluted wastewater containing substances that can damage aquatic ecosystems. In contrast, many natural dyes are biodegradable, although experts caution that they are not automatically environmentally friendly in every situation.</p><p><b>D</b><br>Natural dyes have also played an important role in cultural traditions around the world. Certain colours became strongly connected with particular regions because the materials required to create them were only available locally. In some communities, dyeing techniques were closely linked to ceremonies, clothing styles and social identity. However, as industrial textiles became widespread, many traditional practices declined because younger generations often viewed them as outdated or economically impractical.</p><p><b>E</b><br>Modern researchers are now investigating ways to make natural dye production more suitable for large-scale use. Scientists are experimenting with improved extraction methods that can increase colour strength and reduce the amount of raw material required. Some companies are also exploring agricultural waste, such as discarded fruit skins and plant residues, as possible sources of new dyes. These approaches may allow natural colouring methods to become more competitive while reducing pressure on natural resources.</p><p><b>F</b><br>Despite these developments, several challenges remain. Natural dyes often require additional treatment to ensure that colours remain stable after repeated washing and exposure to sunlight. Furthermore, producing enough dye materials for global textile markets would require careful management to avoid excessive harvesting of plants. For this reason, many researchers argue that natural dyes should not completely replace synthetic alternatives but should instead become part of a broader approach to sustainable textile production.</p><p><b>G</b><br>The future of natural dyes will probably depend on cooperation between scientists, traditional artisans and the textile industry. While modern technology can help overcome some technical limitations, traditional knowledge provides valuable information about materials and methods that might otherwise disappear. By combining historical experience with scientific innovation, researchers hope to develop colouring systems that are both environmentally responsible and commercially practical.</p>",
+  "questions": [
+    {
+      "number": 1,
+      "type": "gap",
+      "question": "Before synthetic dyes existed, coloured textiles were mainly created from materials taken from ________, animals and minerals."
+    },
+    {
+      "number": 2,
+      "type": "gap",
+      "question": "The final colour produced from plants could be affected by factors such as the ________ in which the plant grew."
+    },
+    {
+      "number": 3,
+      "type": "gap",
+      "question": "Traditional dyers often gained specialised knowledge by sharing their methods across different ________."
+    },
+    {
+      "number": 4,
+      "type": "gap",
+      "question": "Synthetic dyes became popular because factories could manufacture fabrics with a high level of ________."
+    },
+    {
+      "number": 5,
+      "type": "gap",
+      "question": "Some synthetic dye production has caused environmental problems because polluted ________ may contain harmful substances."
+    },
+    {
+      "number": 6,
+      "type": "tfng",
+      "question": "The recent interest in natural dyes is mainly due to people's desire to preserve old traditions."
+    },
+    {
+      "number": 7,
+      "type": "tfng",
+      "question": "The colour obtained from a particular plant can change depending on how the plant is prepared."
+    },
+    {
+      "number": 8,
+      "type": "tfng",
+      "question": "Synthetic dyes became more widely used because they allowed manufacturers to create identical colours on a large scale."
+    },
+    {
+      "number": 9,
+      "type": "tfng",
+      "question": "All natural dyes are considered harmless to the environment."
+    },
+    {
+      "number": 10,
+      "type": "tfng",
+      "question": "Some traditional dyeing practices disappeared because they were considered unsuitable for modern economic conditions."
+    },
+    {
+      "number": 11,
+      "type": "tfng",
+      "question": "Researchers have already developed a complete replacement for synthetic dyes using only natural materials."
+    },
+    {
+      "number": 12,
+      "type": "tfng",
+      "question": "Large-scale production of natural dyes could create problems if plant resources are not managed carefully."
+    },
+    {
+      "number": 13,
+      "type": "tfng",
+      "question": "Future developments in natural dyes are expected to involve both modern scientific methods and traditional knowledge."
+    }
+  ],
+  "answers": [
+    "plants",
+    "soil composition",
+    "generations",
+    "consistency",
+    "wastewater",
+    "FALSE",
+    "TRUE",
+    "TRUE",
+    "FALSE",
+    "TRUE",
+    "NOT GIVEN",
+    "TRUE",
+    "TRUE"
+  ]
+}
