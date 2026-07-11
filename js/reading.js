@@ -1,3 +1,9 @@
+import {
+    db,
+    doc,
+    getDoc
+} from "./firebase.js";
+
 let testData;
 
 // =============================
