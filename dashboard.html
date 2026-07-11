@@ -1,65 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard</title>
 
-<style>
-body{
-font-family:Arial,sans-serif;
-background:#f4f7fb;
-margin:0;
-padding:30px;
-}
+<title>Dashboard</title>
 
-.container{
-max-width:1000px;
-margin:auto;
-}
+<link rel="stylesheet" href="css/dashboard.css">
 
-.card{
-background:#fff;
-padding:20px;
-border-radius:12px;
-margin-bottom:20px;
-box-shadow:0 2px 10px rgba(0,0,0,.1);
-}
-
-.button{
-display:inline-block;
-padding:12px 20px;
-background:#1565c0;
-color:#fff;
-text-decoration:none;
-border:none;
-border-radius:8px;
-cursor:pointer;
-margin-top:10px;
-}
-
-.button:hover{
-background:#0d47a1;
-}
-</style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="sidebar">
 
-<h1>📚 SGR IELTS Dashboard</h1>
+<h2>SGR IELTS</h2>
 
-<div class="card">
-<h2>Reading Tests</h2>
+<a href="#">🏠 Dashboard</a>
 
-<button class="button" onclick="location.href='admin.html'">
-➕ Create New Reading Test
-</button>
+<a href="admin.html">➕ New Reading Test</a>
 
-<div id="readingTests"></div>
+<a href="#">📖 Reading Tests</a>
+
+<a href="#">📊 Results</a>
+
+<a href="#">⚙ Settings</a>
 
 </div>
+
+<div class="main">
+
+<h1>Dashboard</h1>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Total Reading Tests</h3>
+
+<h1 id="totalTests">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Total Students</h3>
+
+<h1>0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Average Score</h3>
+
+<h1>0%</h1>
+
+</div>
+
+</div>
+
+<br>
+
+<h2>Reading Tests</h2>
+
+<div id="testList"></div>
 
 </div>
 
