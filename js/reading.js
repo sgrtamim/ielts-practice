@@ -220,6 +220,8 @@ for(let i = 0; i < testData.answers.length; i++){
 
 }
 
+localStorage.setItem("userAnswers", JSON.stringify(answers));
+localStorage.setItem("correctAnswers", JSON.stringify(testData.answers));
 window.location.href = "result.html";
 
 }
