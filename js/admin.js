@@ -1,3 +1,9 @@
+import {
+    db,
+    collection,
+    addDoc
+} from "./firebase.js";
+
 const list=document.getElementById("questions");
 
 let number=1;
