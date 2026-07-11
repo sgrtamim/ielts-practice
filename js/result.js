@@ -1,61 +1,56 @@
-const score = Number(localStorage.getItem("score")) || 0;
-const total = Number(localStorage.getItem("total")) || 13;
+const score =
+Number(localStorage.getItem("score"));
+
+const total =
+Number(localStorage.getItem("total"));
+
+const userAnswers =
+JSON.parse(localStorage.getItem("userAnswers"));
+
+const correctAnswers =
+JSON.parse(localStorage.getItem("correctAnswers"));
 
 document.getElementById("score").innerHTML =
 `${score} / ${total}`;
 
-let band = "0.0";
+const review =
+document.getElementById("review");
 
-const percent = score / total;
-
-if(percent>=0.9) band="9.0";
-else if(percent>=0.8) band="8.0";
-else if(percent>=0.7) band="7.0";
-else if(percent>=0.6) band="6.0";
-else if(percent>=0.5) band="5.5";
-else if(percent>=0.4) band="5.0";
-else if(percent>=0.3) band="4.5";
-
-document.getElementById("band").innerHTML =
-"Estimated Band: "+band;
-
-function reviewTest(){
-
-const user =
-JSON.parse(localStorage.getItem("userAnswers"));
+for(let i=0;i<correctAnswers.length;i++){
 
 const correct =
-JSON.parse(localStorage.getItem("correctAnswers"));
+correctAnswers[i].toString().trim();
 
-let html="<hr><h2>Answer Review</h2>";
-
-for(let i=0;i<correct.length;i++){
+const user =
+(userAnswers[i] || "").toString().trim();
 
 const ok =
-String(user[i]).toLowerCase() ==
-String(correct[i]).toLowerCase();
+correct.toLowerCase() === user.toLowerCase();
 
-html+=`
+review.innerHTML += `
 
-<div style="
-padding:15px;
-margin:15px 0;
-border-radius:10px;
-background:${ok ? "#d4edda" : "#f8d7da"};
-">
+<div class="answerCard ${ok ? "correct":"wrong"}">
 
 <h3>Question ${i+1}</h3>
 
-<p><b>Your Answer:</b> ${user[i] || "No Answer"}</p>
+<p>
 
-<p><b>Correct Answer:</b> ${correct[i]}</p>
+<b>Your Answer:</b>
+
+${user || "<i>No Answer</i>"}
+
+</p>
+
+<p>
+
+<b>Correct Answer:</b>
+
+${correct}
+
+</p>
 
 </div>
 
 `;
-
-}
-
-document.getElementById("review").innerHTML=html;
 
 }
