@@ -136,6 +136,11 @@ const index = [...document.querySelectorAll(".question")].indexOf(q);
 localStorage.setItem("answer_" + index, e.target.innerText);
 
     const q = e.target.closest(".question");
+const index = [...document.querySelectorAll(".question")].indexOf(q);
+
+localStorage.setItem("answer_" + index, e.target.innerText);
+
+    const q = e.target.closest(".question");
 
 const index = [...document.querySelectorAll(".question")].indexOf(q) + 1;
 
