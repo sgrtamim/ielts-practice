@@ -304,6 +304,37 @@ ${q.question.replace("________",
 
 container.innerHTML+=html;
 
+document.querySelectorAll(".question").forEach((q, index)=>{
+
+    const saved = localStorage.getItem("answer_" + index);
+
+    if(!saved) return;
+
+    const input = q.querySelector("input");
+
+    if(input){
+
+        input.value = saved;
+
+    }else{
+
+        q.querySelectorAll(".tfng").forEach(btn=>{
+
+            if(btn.innerText === saved){
+
+                btn.classList.add("selected");
+
+                document.getElementById("nav" + (index + 1))
+                    .classList.add("answered");
+
+            }
+
+        });
+
+    }
+
+});
+
 });
 
 });
