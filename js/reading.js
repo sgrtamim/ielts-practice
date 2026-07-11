@@ -1,20 +1,24 @@
-import {
-    db,
-    doc,
-    getDoc
-} from "./firebase.js";
+// ========================================
+// GLOBAL VARIABLES
+// ========================================
 
-let testData;
+let testData = null;
 
-// =============================
-// FONT SIZE
-// =============================
+const passage = document.getElementById("passageContent");
+const questions = document.getElementById("questionContent");
+const navigatorBox = document.getElementById("navigator");
+const timer = document.getElementById("timer");
 
 let passageFont = 18;
 let questionFont = 18;
 
-const passage = document.getElementById("passageContent");
-const questions = document.getElementById("questionContent");
+let totalSeconds = 1800;
+let countdown;
+
+
+// ========================================
+// FONT SIZE
+// ========================================
 
 document.getElementById("passagePlus").onclick = () => {
     passageFont += 2;
@@ -41,9 +45,9 @@ document.getElementById("questionMinus").onclick = () => {
 };
 
 
-// =============================
+// ========================================
 // DRAG DIVIDER
-// =============================
+// ========================================
 
 const divider = document.getElementById("divider");
 const leftPanel = document.getElementById("passagePanel");
@@ -58,52 +62,48 @@ document.addEventListener("mouseup", () => {
     dragging = false;
 });
 
-document.addEventListener("mousemove", (e) => {
+document.addEventListener("mousemove", e => {
 
     if (!dragging) return;
 
     let width = (e.clientX / window.innerWidth) * 100;
 
-    if (width < 25) width = 25;
-    if (width > 75) width = 75;
+    width = Math.max(25, Math.min(75, width));
 
     leftPanel.style.width = width + "%";
 
 });
 
 
-// =============================
+// ========================================
 // TIMER
-// =============================
+// ========================================
 
-let minutes = Number(localStorage.getItem("readingTime")) || 30;
+function startTimer() {
 
-let totalSeconds = minutes * 60;
+    clearInterval(countdown);
 
-const timer = document.getElementById("timer");
+    updateTimer();
+
+    countdown = setInterval(updateTimer, 1000);
+
+}
 
 function updateTimer() {
 
-    let m = Math.floor(totalSeconds / 60);
+    const m = Math.floor(totalSeconds / 60);
+    const s = totalSeconds % 60;
 
-    let s = totalSeconds % 60;
-
-    timer.innerHTML =
+    timer.textContent =
         String(m).padStart(2, "0") +
         ":" +
         String(s).padStart(2, "0");
 
-    if (totalSeconds == 300) {
+    if (totalSeconds === 300)
+        alert("Only 5 minutes remaining.");
 
-        alert("Only 5 minutes remaining");
-
-    }
-
-    if (totalSeconds == 60) {
-
-        alert("Only 1 minute remaining");
-
-    }
+    if (totalSeconds === 60)
+        alert("Only 1 minute remaining.");
 
     if (totalSeconds <= 0) {
 
@@ -111,288 +111,127 @@ function updateTimer() {
 
         submitTest();
 
+        return;
+
     }
 
     totalSeconds--;
 
 }
 
-updateTimer();
 
-const countdown = setInterval(updateTimer, 1000);
-
-
-// =============================
-// TFNG BUTTONS
-// =============================
-
-document.addEventListener("click", function(e){
-
-    if(!e.target.classList.contains("tfng")) return;
-
-    let group = e.target.parentElement.querySelectorAll(".tfng");
-
-    group.forEach(btn=>btn.classList.remove("selected"));
-
-    e.target.classList.add("selected");
-
-    const q = e.target.closest(".question");
-const index = [...document.querySelectorAll(".question")].indexOf(q);
-
-localStorage.setItem("answer_" + index, e.target.innerText);
-
-    const q = e.target.closest(".question");
-const index = [...document.querySelectorAll(".question")].indexOf(q);
-
-localStorage.setItem("answer_" + index, e.target.innerText);
-
-    const q = e.target.closest(".question");
-
-const index = [...document.querySelectorAll(".question")].indexOf(q) + 1;
-
-document.getElementById("nav" + index).classList.add("answered");
-
-});
-
-
-// =============================
-// SUBMIT
-// =============================
-
-document.getElementById("submitBtn").onclick=function(){
-
-let ok=confirm("Are you sure you want to submit the test?");
-
-if(ok){
-
-submitTest();
-
-}
-
-};
-
-
-// =============================
-// SUBMIT FUNCTION
-// =============================
-
-function submitTest(){
-
-let score=0;
-
-const answers=[];
-
-/* TFNG */
-
-document.querySelectorAll(".question").forEach(q=>{
-
-let selected=q.querySelector(".selected");
-
-if(selected){
-
-answers.push(selected.innerText);
-
-}else{
-
-let input=q.querySelector("input");
-
-answers.push(input ? input.value.trim().toLowerCase() : "");
-
-}
-
-});
-
-
-for(let i=0;i<answers.length;i++){
-
-let user=answers[i];
-
-let correct=testData.answers[i];
-
-if(user.toString().toLowerCase()==correct.toString().toLowerCase()){
-
-score++;
-
-}
-
-}
-
-localStorage.setItem("score", score);
-localStorage.setItem("total", testData.answers.length);
-
-for(let i = 0; i < testData.answers.length; i++){
-
-    localStorage.removeItem("answer_" + i);
-
-}
-
-localStorage.setItem("userAnswers", JSON.stringify(answers));
-localStorage.setItem("correctAnswers", JSON.stringify(testData.answers));
-window.location.href = "result.html";
-
-}
+// ========================================
+// LOAD TEST
+// ========================================
 
 const params = new URLSearchParams(window.location.search);
-const testId = params.get("id");
 
-loadTest(testId);
+const fileName = params.get("id") || "reading1";
 
-async function loadTest(id){
+loadTest(fileName);
 
-    const snap = await getDoc(doc(db,"readingTests",id));
+async function loadTest(file) {
 
-    if(!snap.exists()){
+    try {
 
-        alert("Test not found.");
+        const response = await fetch(`data/reading/${file}.json`);
 
-        return;
+        if (!response.ok)
+            throw new Error("Cannot load test.");
 
-    }
+        testData = await response.json();
 
-    const data = snap.data();
+        document.getElementById("testTitle").textContent =
+            testData.title;
 
-    testData = data;
+        passage.innerHTML = testData.passage;
 
-    document.getElementById("testTitle").innerHTML = data.title;
+        totalSeconds = testData.time * 60;
 
-    passage.innerHTML = data.passage;
+        startTimer();
 
-    const container = document.getElementById("questionContent");
-
-    container.innerHTML = "";
-
-    // Keep your existing code here that creates the questions
-}
-
-document.getElementById("testTitle").innerHTML=data.title;
-
-totalSeconds=data.time*60;
-
-passage.innerHTML=data.passage;
-
-const container=document.getElementById("questionContent");
-
-container.innerHTML="";
-
-const nav=document.getElementById("navigator");
-
-nav.innerHTML="";
-
-data.questions.forEach(q=>{
-
-nav.innerHTML+=`
-
-<button
-class="navBtn"
-id="nav${q.number}"
-onclick="goQuestion(${q.number})">
-
-${q.number}
-
-</button>
-
-`;
-
-let html="";
-
-if(q.type=="tfng"){
-
-html=`
-
-<div class="question">
-
-<p><b>${q.number}.</b> ${q.question}</p>
-
-<button class="tfng">TRUE</button>
-
-<button class="tfng">FALSE</button>
-
-<button class="tfng">NOT GIVEN</button>
-
-</div>
-
-`;
-
-}
-
-if(q.type=="gap"){
-
-html=`
-
-<div class="question">
-
-<p>
-
-<b>${q.number}.</b>
-
-${q.question.replace("________",
-
-`<input type="text">`)}
-
-</p>
-
-</div>
-
-`;
-
-}
-
-container.innerHTML+=html;
-
-document.querySelectorAll(".question").forEach((q, index)=>{
-
-    const saved = localStorage.getItem("answer_" + index);
-
-    if(!saved) return;
-
-    const input = q.querySelector("input");
-
-    if(input){
-
-        input.value = saved;
-
-    }else{
-
-        q.querySelectorAll(".tfng").forEach(btn=>{
-
-            if(btn.innerText === saved){
-
-                btn.classList.add("selected");
-
-                document.getElementById("nav" + (index + 1))
-                    .classList.add("answered");
-
-            }
-
-        });
+        buildQuestions();
 
     }
 
-});
+    catch (err) {
 
-});
+        console.error(err);
 
-});
+        passage.innerHTML =
+            "<h2>Unable to load the test.</h2>";
 
-function goQuestion(number){
+        questions.innerHTML = "";
 
-const question=document.querySelectorAll(".question")[number-1];
-
-question.scrollIntoView({
-
-behavior:"smooth"
-
-});
+    }
 
 }
 
-document.addEventListener("input", function(e){
 
-    if(e.target.tagName !== "INPUT") return;
+// ========================================
+// BUILD QUESTIONS
+// ========================================
 
-    const q = e.target.closest(".question");
-    const index = [...document.querySelectorAll(".question")].indexOf(q);
+function buildQuestions() {
 
-    localStorage.setItem("answer_" + index, e.target.value);
+    questions.innerHTML = "";
+    navigatorBox.innerHTML = "";
 
-});
+    testData.questions.forEach(q => {
+
+        navigatorBox.innerHTML += `
+            <button
+                class="navBtn"
+                id="nav${q.number}"
+                onclick="goQuestion(${q.number})">
+
+                ${q.number}
+
+            </button>
+        `;
+
+        if (q.type === "tfng") {
+
+            questions.innerHTML += `
+                <div class="question">
+
+                    <p>
+                        <b>${q.number}.</b>
+                        ${q.question}
+                    </p>
+
+                    <button class="tfng">TRUE</button>
+                    <button class="tfng">FALSE</button>
+                    <button class="tfng">NOT GIVEN</button>
+
+                </div>
+            `;
+
+        }
+
+        if (q.type === "gap") {
+
+            questions.innerHTML += `
+                <div class="question">
+
+                    <p>
+
+                        <b>${q.number}.</b>
+
+                        ${q.question.replace(
+                            "________",
+                            '<input type="text">'
+                        )}
+
+                    </p>
+
+                </div>
+            `;
+
+        }
+
+    });
+
+    restoreAnswers();
+
+}
