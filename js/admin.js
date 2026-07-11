@@ -126,3 +126,5 @@ document.getElementById("save").onclick = async () => {
     }
 
 };
+
+document.getElementById("addQuestion").click();
