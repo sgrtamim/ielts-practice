@@ -102,3 +102,29 @@ cursor:pointer;
 background:#0042a6;
 
 }
+
+.timeBox{
+
+margin:15px 0;
+
+}
+
+.timeBox label{
+
+display:block;
+
+margin-bottom:5px;
+
+font-weight:bold;
+
+}
+
+.timeBox select{
+
+width:100%;
+
+padding:8px;
+
+border-radius:5px;
+
+}
