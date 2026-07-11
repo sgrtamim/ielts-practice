@@ -1,82 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Test Result</title>
 
-<style>
-body{
-font-family:Arial,sans-serif;
-background:#f4f7fb;
-padding:40px;
-}
+<title>Result</title>
 
-.container{
-max-width:700px;
-margin:auto;
-background:white;
-padding:30px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
-text-align:center;
-}
-
-h1{
-color:#1565c0;
-}
-
-.score{
-font-size:50px;
-font-weight:bold;
-margin:20px 0;
-}
-
-.band{
-font-size:30px;
-color:#2e7d32;
-margin-bottom:20px;
-}
-
-button{
-padding:15px 30px;
-border:none;
-background:#1565c0;
-color:white;
-font-size:18px;
-border-radius:8px;
-cursor:pointer;
-margin:10px;
-}
-
-button:hover{
-background:#0d47a1;
-}
-</style>
+<link rel="stylesheet" href="css/result.css">
 
 </head>
+
 <body>
 
 <div class="container">
 
-<h1>Your Result</h1>
+<h1>Reading Test Result</h1>
 
-<div class="score" id="score">0 / 13</div>
+<div class="scoreBox">
 
-<button onclick="reviewTest()">
-Review Answers
-</button>
+<h2 id="score"></h2>
+
+</div>
+
+<h2>Answer Review</h2>
 
 <div id="review"></div>
 
-<div class="band" id="band">Band 0.0</div>
+<br>
 
-<button onclick="location.href='index.html'">
-Home
+<button onclick="location.href='dashboard.html'">
+Back to Dashboard
 </button>
 
 <button onclick="history.back()">
-Review Test
+Retry Test
 </button>
 
 </div>
@@ -84,4 +43,5 @@ Review Test
 <script src="js/result.js"></script>
 
 </body>
+
 </html>
