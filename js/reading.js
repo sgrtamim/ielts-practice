@@ -529,3 +529,41 @@ function submitTest() {
     window.location.href = "result.html";
 
 }
+
+// =========================================
+// HIGHLIGHT TOOL
+// =========================================
+
+document.getElementById("highlightBtn").addEventListener("click", () => {
+
+    const selection = window.getSelection();
+
+    if (selection.rangeCount === 0) return;
+
+    const range = selection.getRangeAt(0);
+
+    if (selection.toString().trim() === "") return;
+
+    // Only allow highlighting inside the passage
+    if (!document.getElementById("passageContent").contains(range.commonAncestorContainer)) {
+        alert("Please select text from the passage only.");
+        return;
+    }
+
+    const mark = document.createElement("mark");
+
+    try {
+
+        range.surroundContents(mark);
+
+        selection.removeAllRanges();
+
+        saveHighlights();
+
+    } catch (err) {
+
+        alert("Please highlight text within a single paragraph.");
+
+    }
+
+});
