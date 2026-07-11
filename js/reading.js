@@ -128,6 +128,8 @@ document.addEventListener("click", function(e){
 
     group.forEach(btn=>btn.classList.remove("selected"));
 
+    e.target.classList.add("selected");
+
     const q = e.target.closest(".question");
 
 const index = [...document.querySelectorAll(".question")].indexOf(q) + 1;
