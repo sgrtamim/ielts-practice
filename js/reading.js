@@ -319,3 +319,14 @@ behavior:"smooth"
 });
 
 }
+
+document.addEventListener("input", function(e){
+
+    if(e.target.tagName !== "INPUT") return;
+
+    const q = e.target.closest(".question");
+    const index = [...document.querySelectorAll(".question")].indexOf(q);
+
+    localStorage.setItem("answer_" + index, e.target.value);
+
+});
