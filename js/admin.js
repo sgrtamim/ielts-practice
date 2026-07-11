@@ -8,7 +8,43 @@ const list=document.getElementById("questions");
 
 let number=1;
 
-document.getElementById("addTFNG").onclick=()=>{
+document.getElementById("addQuestion").onclick = () => {
+
+list.innerHTML += `
+
+<div class="question">
+
+<h3>Question ${number}</h3>
+
+<label>Type</label>
+
+<select class="type">
+
+<option value="tfng">TRUE / FALSE / NOT GIVEN</option>
+
+<option value="gap">Gap Fill</option>
+
+</select>
+
+<input
+class="q"
+placeholder="Question">
+
+<input
+class="a"
+placeholder="Correct Answer">
+
+<button class="delete">
+🗑 Delete
+</button>
+
+</div>
+
+`;
+
+number++;
+
+};
 
 list.innerHTML+=`
 
@@ -31,7 +67,43 @@ number++;
 };
 
 
-document.getElementById("addGap").onclick=()=>{
+document.getElementById("addQuestion").onclick = () => {
+
+list.innerHTML += `
+
+<div class="question">
+
+<h3>Question ${number}</h3>
+
+<label>Type</label>
+
+<select class="type">
+
+<option value="tfng">TRUE / FALSE / NOT GIVEN</option>
+
+<option value="gap">Gap Fill</option>
+
+</select>
+
+<input
+class="q"
+placeholder="Question">
+
+<input
+class="a"
+placeholder="Correct Answer">
+
+<button class="delete">
+🗑 Delete
+</button>
+
+</div>
+
+`;
+
+number++;
+
+};
 
 list.innerHTML+=`
 
