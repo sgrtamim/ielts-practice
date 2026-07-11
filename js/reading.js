@@ -211,7 +211,7 @@ fetch(`data/reading/${testName}.json`)
 
 .then(data=>{
 
-test=data;
+testData=data;
 
 document.getElementById("testTitle").innerHTML=data.title;
 
