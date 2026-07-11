@@ -193,7 +193,10 @@ score++;
 
 }
 
-alert("Your Score : "+score+" / "+test.answers.length);
+localStorage.setItem("score", score);
+localStorage.setItem("total", testData.answers.length);
+
+window.location.href = "result.html";
 
 }
 
@@ -218,7 +221,7 @@ const container=document.getElementById("questionContent");
 
 container.innerHTML="";
 
-data.questions.forEach(q=>{
+data.questions.forEach(q=>{id
 
 let html="";
 
