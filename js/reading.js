@@ -351,3 +351,177 @@ function goQuestion(number) {
 }
 
 window.goQuestion = goQuestion;
+
+// =========================================
+// TRUE / FALSE / NOT GIVEN
+// =========================================
+
+document.addEventListener("click", e => {
+
+    if (!e.target.classList.contains("tfng")) return;
+
+    const buttons = e.target.parentElement.querySelectorAll(".tfng");
+
+    buttons.forEach(btn => btn.classList.remove("selected"));
+
+    e.target.classList.add("selected");
+
+    const question = e.target.closest(".question");
+
+    const index =
+        [...document.querySelectorAll(".question")]
+        .indexOf(question);
+
+    localStorage.setItem(
+        "answer_" + index,
+        e.target.innerText
+    );
+
+    document
+        .getElementById("nav" + (index + 1))
+        .classList.add("answered");
+
+});
+
+
+// =========================================
+// GAP INPUT SAVE
+// =========================================
+
+document.addEventListener("input", e => {
+
+    if (e.target.tagName !== "INPUT") return;
+
+    const question = e.target.closest(".question");
+
+    const index =
+        [...document.querySelectorAll(".question")]
+        .indexOf(question);
+
+    localStorage.setItem(
+        "answer_" + index,
+        e.target.value
+    );
+
+    document
+        .getElementById("nav" + (index + 1))
+        .classList.add("answered");
+
+});
+
+
+// =========================================
+// SUBMIT BUTTON
+// =========================================
+
+document.getElementById("submitBtn").onclick = () => {
+
+    const ok = confirm(
+        "Are you sure you want to submit the test?"
+    );
+
+    if (ok) {
+
+        submitTest();
+
+    }
+
+};
+
+
+// =========================================
+// SUBMIT TEST
+// =========================================
+
+function submitTest() {
+
+    clearInterval(countdown);
+
+    let score = 0;
+
+    const userAnswers = [];
+
+    document.querySelectorAll(".question").forEach(q => {
+
+        const selected = q.querySelector(".selected");
+
+        if (selected) {
+
+            userAnswers.push(
+                selected.innerText.trim()
+            );
+
+        }
+
+        else {
+
+            const input = q.querySelector("input");
+
+            userAnswers.push(
+
+                input
+                    ? input.value.trim().toLowerCase()
+                    : ""
+
+            );
+
+        }
+
+    });
+
+
+    for (let i = 0; i < testData.answers.length; i++) {
+
+        const correct =
+            testData.answers[i]
+            .toString()
+            .trim()
+            .toLowerCase();
+
+        const user =
+            userAnswers[i]
+            .toString()
+            .trim()
+            .toLowerCase();
+
+        if (correct === user) {
+
+            score++;
+
+        }
+
+    }
+
+
+    localStorage.setItem(
+        "score",
+        score
+    );
+
+    localStorage.setItem(
+        "total",
+        testData.answers.length
+    );
+
+    localStorage.setItem(
+        "userAnswers",
+        JSON.stringify(userAnswers)
+    );
+
+    localStorage.setItem(
+        "correctAnswers",
+        JSON.stringify(testData.answers)
+    );
+
+
+    for (let i = 0; i < testData.answers.length; i++) {
+
+        localStorage.removeItem(
+            "answer_" + i
+        );
+
+    }
+
+    window.location.href = "result.html";
+
+}
