@@ -173,8 +173,19 @@ if(savedPassage){
 
 }else{
 
+const savedPassage =
+localStorage.getItem("reading_highlight_passage");
+
+if(savedPassage){
+
+    passage.innerHTML = savedPassage;
+
+}else{
+
     passage.innerHTML = testData.passage;
 
+}
+    
 }
 
         const selectedTime =
