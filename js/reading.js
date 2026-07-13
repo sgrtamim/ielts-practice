@@ -138,3 +138,24 @@ async function loadTest(id){
     }
 
 }
+
+async function loadTest(id){
+
+    console.log("1. loadTest started");
+
+    try{
+
+        const response =
+        await fetch(`data/reading/${id}.json`);
+
+        console.log("2. Fetch status:", response.status);
+
+        if(!response.ok){
+            throw new Error("Cannot load test.");
+        }
+
+        testData = await response.json();
+
+        console.log("3. JSON loaded:", testData);
+
+        ...
