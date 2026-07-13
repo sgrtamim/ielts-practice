@@ -580,8 +580,6 @@ function submitTest() {
 // HIGHLIGHT TOOL
 // =========================================
 
-document.getElementById("highlightBtn").addEventListener("click", () => {
-
     const selection = window.getSelection();
 
     if (selection.rangeCount === 0) return;
