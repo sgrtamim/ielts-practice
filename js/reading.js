@@ -182,7 +182,20 @@ if(savedPassage){
 
 }else{
 
+    const id = fileName;
+
+const savedPassage =
+localStorage.getItem("highlight_passage_" + id);
+
+if(savedPassage){
+
+    passage.innerHTML = savedPassage;
+
+}else{
+
     passage.innerHTML = testData.passage;
+
+}
 
 }
     
@@ -305,15 +318,17 @@ function buildQuestions() {
 
     restoreAnswers();
 
+const id =
+new URLSearchParams(window.location.search)
+.get("id") || "reading1";
+
 const savedQuestions =
-localStorage.getItem("reading_highlight_questions");
+localStorage.getItem("highlight_question_" + id);
 
 if(savedQuestions){
 
     questionContent.innerHTML = savedQuestions;
 
-}
-    
 }
 
 
