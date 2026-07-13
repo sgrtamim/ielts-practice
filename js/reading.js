@@ -165,17 +165,7 @@ async function loadTest(fileName) {
         document.getElementById("testTitle").textContent =
             testData.title;
 
-        const savedHighlight =
-localStorage.getItem("highlight_" + testData.title);
-
-if(savedHighlight){
-
-    passage.innerHTML = savedHighlight;
-
-}else{
-
- const savedPassage =
-localStorage.getItem("highlight_" + testId);
+       const savedPassage = localStorage.getItem("highlight_" + fileName);
 
 if(savedPassage){
 
@@ -184,8 +174,6 @@ if(savedPassage){
 }else{
 
     passage.innerHTML = testData.passage;
-
-}
 
 }
 
