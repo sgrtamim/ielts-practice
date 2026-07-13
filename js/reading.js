@@ -146,7 +146,7 @@ function updateTimer() {
 
 const params = new URLSearchParams(window.location.search);
 
-const file = params.get("id") || "reading1";
+const file = params.get("test") || "reading1";
 
 loadTest(file);
 
