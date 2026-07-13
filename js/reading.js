@@ -632,3 +632,21 @@ document.addEventListener("mouseup", () => {
     toolbar.style.display = "block";
 
 });
+
+document.addEventListener("mousedown", function(e){
+
+    if(
+        !toolbar.contains(e.target)
+    ){
+
+        if(
+            window.getSelection().toString() === ""
+        ){
+
+            toolbar.style.display = "none";
+
+        }
+
+    }
+
+});
