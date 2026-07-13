@@ -1,99 +1,166 @@
-// ===============================
-// SGR IELTS Highlight Engine v1
-// ===============================
+// =======================================
+// SGR IELTS Highlight Engine v2
+// =======================================
 
 const toolbar = document.getElementById("highlightToolbar");
 const highlightBtn = document.getElementById("highlightAction");
 
 let currentRange = null;
 
-// Show toolbar when text is selected
+// -------------------------------
+// Show toolbar
+// -------------------------------
+
 document.addEventListener("mouseup", () => {
 
     const selection = window.getSelection();
 
     if (!selection.rangeCount) {
+
         toolbar.style.display = "none";
         return;
+
     }
 
     if (selection.toString().trim() === "") {
+
         toolbar.style.display = "none";
         return;
+
     }
 
     const range = selection.getRangeAt(0);
 
-    // Only allow highlighting inside passage or questions
-    const allowed =
-        document.getElementById("passageContent").contains(range.commonAncestorContainer) ||
-        document.getElementById("questionContent").contains(range.commonAncestorContainer);
+    const passage =
+        document.getElementById("passageContent");
 
-    if (!allowed) {
+    const questions =
+        document.getElementById("questionContent");
+
+    if (
+        !passage.contains(range.commonAncestorContainer) &&
+        !questions.contains(range.commonAncestorContainer)
+    ) {
+
         toolbar.style.display = "none";
         return;
+
     }
 
     currentRange = range.cloneRange();
 
+    toolbar.style.display = "block";
+
     const rect = range.getBoundingClientRect();
 
+    const width = toolbar.offsetWidth;
+
     toolbar.style.left =
-        window.scrollX + rect.left + rect.width / 2 - toolbar.offsetWidth / 2 + "px";
+        window.scrollX +
+        rect.left +
+        rect.width / 2 -
+        width / 2 +
+        "px";
 
     toolbar.style.top =
-        window.scrollY + rect.top - 50 + "px";
-
-    toolbar.style.display = "block";
+        window.scrollY +
+        rect.top -
+        55 +
+        "px";
 
 });
 
-// =====================================
-// APPLY HIGHLIGHT
-// =====================================
 
-highlightBtn.addEventListener("mousedown", function (e) {
+// -------------------------------
+// Hide toolbar
+// -------------------------------
+
+document.addEventListener("mousedown", function(e){
+
+    if(
+        toolbar.contains(e.target)
+    ) return;
+
+    setTimeout(()=>{
+
+        if(
+            window.getSelection().toString()==""
+        ){
+
+            toolbar.style.display="none";
+
+        }
+
+    },50);
+
+});
+
+
+// -------------------------------
+// Highlight
+// -------------------------------
+
+highlightBtn.addEventListener("mousedown", function(e){
 
     e.preventDefault();
 
-    if (!currentRange) return;
+    if(!currentRange) return;
 
-    const mark = document.createElement("mark");
+    try{
 
-    try {
+        const mark =
+        document.createElement("mark");
 
         currentRange.surroundContents(mark);
 
+        toolbar.style.display="none";
+
+        window.getSelection().removeAllRanges();
+
         saveHighlights();
-
-    } catch (err) {
-
-        console.log(err);
-
-        alert("Please highlight inside one paragraph.");
 
     }
 
-    toolbar.style.display = "none";
+    catch(err){
 
-    window.getSelection().removeAllRanges();
+        alert(
+            "Please select text inside one paragraph."
+        );
+
+    }
 
 });
 
-// =====================================
-// SAVE
-// =====================================
+
+// -------------------------------
+// Save
+// -------------------------------
 
 function saveHighlights(){
 
+    const id =
+    new URLSearchParams(
+        window.location.search
+    ).get("id") || "reading1";
+
     localStorage.setItem(
-        "reading_highlight_passage",
-        document.getElementById("passageContent").innerHTML
+
+        "highlight_passage_"+id,
+
+        document.getElementById(
+            "passageContent"
+        ).innerHTML
+
     );
 
     localStorage.setItem(
-        "reading_highlight_questions",
-        document.getElementById("questionContent").innerHTML
+
+        "highlight_question_"+id,
+
+        document.getElementById(
+            "questionContent"
+        ).innerHTML
+
     );
 
 }
