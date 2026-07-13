@@ -1,123 +1,79 @@
-// =========================================
+// ========================================
 // SGR IELTS Reading System V2
-// Part 1 - Variables & DOM
-// =========================================
+// ========================================
 
-// ---------- Test Data ----------
+// ---------- Global Variables ----------
 
 let testData = null;
 
-// ---------- Passage ----------
+let totalSeconds = 0;
 
-const passage =
-document.getElementById("passageContent");
+let timerInterval = null;
 
-// ---------- Questions ----------
+let passageFont = 18;
+let questionFont = 18;
 
-const questionContent =
-document.getElementById("questionContent");
+// ---------- DOM ----------
 
-// ---------- Navigator ----------
+const passage = document.getElementById("passageContent");
+const questionContent = document.getElementById("questionContent");
+const navigatorBox = document.getElementById("navigator");
+const timer = document.getElementById("timer");
+const title = document.getElementById("testTitle");
 
-const navigatorBox =
-document.getElementById("navigator");
+const submitBtn = document.getElementById("submitBtn");
 
-// ---------- Timer ----------
+const divider = document.getElementById("divider");
+const passagePanel = document.getElementById("passagePanel");
 
-const timer =
-document.getElementById("timer");
+const passagePlus = document.getElementById("passagePlus");
+const passageMinus = document.getElementById("passageMinus");
 
-// ---------- Title ----------
-
-const testTitle =
-document.getElementById("testTitle");
-
-// ---------- Submit ----------
-
-const submitBtn =
-document.getElementById("submitBtn");
-
-// ---------- Divider ----------
-
-const divider =
-document.getElementById("divider");
-
-const passagePanel =
-document.getElementById("passagePanel");
-
-// ---------- Zoom Buttons ----------
-
-const passagePlus =
-document.getElementById("passagePlus");
-
-const passageMinus =
-document.getElementById("passageMinus");
-
-const questionPlus =
-document.getElementById("questionPlus");
-
-const questionMinus =
-document.getElementById("questionMinus");
+const questionPlus = document.getElementById("questionPlus");
+const questionMinus = document.getElementById("questionMinus");
 
 // ---------- URL ----------
 
-const params =
-new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 
-const testId =
-params.get("id") || "reading1";
+const testId = params.get("id") || "reading1";
 
-// ---------- Timer ----------
+// ---------- Start ----------
 
-let totalSeconds = 0;
+loadTest();
 
-let countdown = null;
+// ========================================
+// LOAD TEST
+// ========================================
 
-// ---------- Font Sizes ----------
-
-let passageFont = 18;
-
-let questionFont = 18;
-
-// =========================================
-// Start Reading Test
-// =========================================
-
-loadTest(testId);
-
-// =========================================
-// Load JSON Test
-// =========================================
-
-async function loadTest(id){
+async function loadTest(){
 
     try{
 
         const response =
-        await fetch(
-            `data/reading/${id}.json`
-        );
+        await fetch(`data/reading/${testId}.json`);
 
         if(!response.ok){
 
-            throw new Error("Cannot load test.");
+            throw new Error("Cannot load JSON");
 
         }
 
         testData =
         await response.json();
 
-        testTitle.textContent =
+        title.textContent =
         testData.title;
 
         passage.innerHTML =
         testData.passage;
 
         totalSeconds =
-        Number(
-            localStorage.getItem("readingTime")
-        ) * 60 ||
-        testData.time * 60;
+        (
+            Number(localStorage.getItem("readingTime"))
+            ||
+            testData.time
+        ) * 60;
 
         buildQuestions();
 
@@ -125,9 +81,9 @@ async function loadTest(id){
 
     }
 
-    catch(error){
+    catch(err){
 
-        console.error(error);
+        console.error(err);
 
         passage.innerHTML =
         "<h2>Unable to load passage.</h2>";
@@ -138,24 +94,3 @@ async function loadTest(id){
     }
 
 }
-
-async function loadTest(id){
-
-    console.log("1. loadTest started");
-
-    try{
-
-        const response =
-        await fetch(`data/reading/${id}.json`);
-
-        console.log("2. Fetch status:", response.status);
-
-        if(!response.ok){
-            throw new Error("Cannot load test.");
-        }
-
-        testData = await response.json();
-
-        console.log("3. JSON loaded:", testData);
-
-        ...
