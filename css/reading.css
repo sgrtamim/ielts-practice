@@ -278,3 +278,65 @@ mark{
     padding:2px;
 
 }
+
+/* ===============================
+   HIGHLIGHT TOOLBAR
+================================ */
+
+#highlightToolbar{
+
+    position:fixed;
+
+    display:none;
+
+    z-index:99999;
+
+    background:#ffffff;
+
+    border-radius:8px;
+
+    padding:6px;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.25);
+
+    border:1px solid #ddd;
+
+    transition:.15s;
+
+}
+
+#highlightToolbar button{
+
+    background:#ffd54f;
+
+    color:#222;
+
+    border:none;
+
+    border-radius:6px;
+
+    padding:8px 14px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+#highlightToolbar button:hover{
+
+    background:#ffca28;
+
+}
+
+mark{
+
+    background:#fff176;
+
+    padding:1px 2px;
+
+    border-radius:2px;
+
+}
