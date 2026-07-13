@@ -699,6 +699,9 @@ document.getElementById("highlightAction").addEventListener("mousedown", functio
 
 function saveHighlights(){
 
+    const testId =
+        new URLSearchParams(window.location.search).get("id") || "reading1";
+
     localStorage.setItem(
         "highlight_" + testId,
         document.getElementById("passageContent").innerHTML
