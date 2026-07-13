@@ -294,6 +294,14 @@ function buildQuestions() {
 
     restoreAnswers();
 
+const savedQuestions = localStorage.getItem("questionHighlight_" + file);
+
+if(savedQuestions){
+
+    questionContent.innerHTML = savedQuestions;
+
+}
+    
 }
 
 
