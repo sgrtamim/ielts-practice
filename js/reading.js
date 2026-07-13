@@ -650,3 +650,53 @@ document.addEventListener("mousedown", function(e){
     }
 
 });
+
+// ====================================
+// APPLY HIGHLIGHT
+// ====================================
+
+document.getElementById("highlightAction").addEventListener("mousedown", function(e){
+
+    e.preventDefault();
+
+    if(!selectedRange) return;
+
+    const mark = document.createElement("mark");
+
+    try{
+
+        selectedRange.surroundContents(mark);
+
+        saveHighlights();
+
+        window.getSelection().removeAllRanges();
+
+        toolbar.style.display = "none";
+
+        selectedRange = null;
+
+    }catch(err){
+
+        alert("Please highlight within a single paragraph.");
+
+    }
+
+});
+
+// ====================================
+// SAVE HIGHLIGHTS
+// ====================================
+
+function saveHighlights(){
+
+    localStorage.setItem(
+        "highlight_" + testId,
+        document.getElementById("passageContent").innerHTML
+    );
+
+    localStorage.setItem(
+        "questionHighlight_" + testId,
+        document.getElementById("questionContent").innerHTML
+    );
+
+}
