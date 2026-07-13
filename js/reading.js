@@ -587,3 +587,48 @@ function saveHighlights(){
     );
 
 }
+
+// ====================================
+// FLOATING HIGHLIGHT TOOLBAR
+// ====================================
+
+const toolbar =
+document.getElementById("highlightToolbar");
+
+let selectedRange = null;
+
+
+document.addEventListener("mouseup", () => {
+
+    const selection = window.getSelection();
+
+    if(selection.toString().trim() === ""){
+
+        toolbar.style.display = "none";
+
+        return;
+
+    }
+
+    if(selection.rangeCount === 0){
+
+        toolbar.style.display = "none";
+
+        return;
+
+    }
+
+    selectedRange = selection.getRangeAt(0);
+
+    const rect =
+    selectedRange.getBoundingClientRect();
+
+    toolbar.style.left =
+    rect.left + window.scrollX + "px";
+
+    toolbar.style.top =
+    rect.top + window.scrollY - 50 + "px";
+
+    toolbar.style.display = "block";
+
+});
