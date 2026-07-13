@@ -185,7 +185,7 @@ if(savedPassage){
     const id = fileName;
 
 const savedPassage =
-localStorage.getItem("highlight_passage_" + id);
+localStorage.getItem("highlight_passage_" + testid);
 
 if(savedPassage){
 
