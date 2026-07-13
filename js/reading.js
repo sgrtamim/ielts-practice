@@ -305,7 +305,8 @@ function buildQuestions() {
 
     restoreAnswers();
 
-const savedQuestions = localStorage.getItem("questionHighlight_" + file);
+const savedQuestions =
+localStorage.getItem("reading_highlight_questions");
 
 if(savedQuestions){
 
