@@ -174,7 +174,18 @@ if(savedHighlight){
 
 }else{
 
+ const savedPassage =
+localStorage.getItem("highlight_" + testId);
+
+if(savedPassage){
+
+    passage.innerHTML = savedPassage;
+
+}else{
+
     passage.innerHTML = testData.passage;
+
+}
 
 }
 
