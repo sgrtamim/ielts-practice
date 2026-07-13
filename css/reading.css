@@ -283,60 +283,80 @@ mark{
    HIGHLIGHT TOOLBAR
 ================================ */
 
+/* ===============================
+   Highlight Toolbar
+================================ */
+
 #highlightToolbar{
 
     position:fixed;
 
     display:none;
 
-    z-index:99999;
+    z-index:999999;
 
     background:#ffffff;
 
-    border-radius:8px;
+    border-radius:10px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.18);
+
+    border:1px solid #e5e5e5;
 
     padding:6px;
 
-    box-shadow:0 6px 20px rgba(0,0,0,.25);
+    animation:fadeIn .15s ease;
 
-    border:1px solid #ddd;
+}
+
+#highlightAction{
+
+    background:#FFD54F;
+
+    border:none;
+
+    padding:8px 14px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
 
     transition:.15s;
 
 }
 
-#highlightToolbar button{
+#highlightAction:hover{
 
-    background:#ffd54f;
-
-    color:#222;
-
-    border:none;
-
-    border-radius:6px;
-
-    padding:8px 14px;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-}
-
-#highlightToolbar button:hover{
-
-    background:#ffca28;
+    background:#FFC107;
 
 }
 
 mark{
 
-    background:#fff176;
+    background:#FFF176;
+
+    border-radius:2px;
 
     padding:1px 2px;
 
-    border-radius:2px;
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+        transform:translateY(6px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
 
 }
