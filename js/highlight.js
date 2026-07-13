@@ -47,3 +47,53 @@ document.addEventListener("mouseup", () => {
     toolbar.style.display = "block";
 
 });
+
+// =====================================
+// APPLY HIGHLIGHT
+// =====================================
+
+highlightBtn.addEventListener("mousedown", function (e) {
+
+    e.preventDefault();
+
+    if (!currentRange) return;
+
+    const mark = document.createElement("mark");
+
+    try {
+
+        currentRange.surroundContents(mark);
+
+        saveHighlights();
+
+    } catch (err) {
+
+        console.log(err);
+
+        alert("Please highlight inside one paragraph.");
+
+    }
+
+    toolbar.style.display = "none";
+
+    window.getSelection().removeAllRanges();
+
+});
+
+// =====================================
+// SAVE
+// =====================================
+
+function saveHighlights(){
+
+    localStorage.setItem(
+        "reading_highlight_passage",
+        document.getElementById("passageContent").innerHTML
+    );
+
+    localStorage.setItem(
+        "reading_highlight_questions",
+        document.getElementById("questionContent").innerHTML
+    );
+
+}
