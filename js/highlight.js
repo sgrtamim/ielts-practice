@@ -163,33 +163,6 @@ function saveHighlights(){
 
 }
 
-function loadHighlights(){
-
-    const id =
-        new URLSearchParams(location.search).get("id") || "reading1";
-
-    const savedPassage =
-        localStorage.getItem("highlight_passage_" + id);
-
-    const savedQuestion =
-        localStorage.getItem("highlight_question_" + id);
-
-    if(savedPassage){
-
-        document.getElementById("passageContent").innerHTML =
-            savedPassage;
-
-    }
-
-    if(savedQuestion){
-
-        document.getElementById("questionContent").innerHTML =
-            savedQuestion;
-
-    }
-
-}
-
 // -------------------------------
 // Load Highlights
 // -------------------------------
