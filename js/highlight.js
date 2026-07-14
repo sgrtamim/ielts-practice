@@ -4,6 +4,8 @@
 
 const toolbar = document.getElementById("highlightToolbar");
 const highlightBtn = document.getElementById("highlightAction");
+console.log("Toolbar:", toolbar);
+console.log("Button:", highlightBtn);
 
 let currentRange = null;
 
@@ -48,7 +50,9 @@ document.addEventListener("selectionchange", () => {
     }
 
     currentRange = range.cloneRange();
-
+    
+    console.log("Showing toolbar");
+    
     toolbar.style.display = "block";
 
     const rect = range.getBoundingClientRect();
