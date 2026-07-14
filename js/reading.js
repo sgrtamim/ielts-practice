@@ -209,8 +209,6 @@ totalSeconds =
 
         questionContent.innerHTML = "";
 
-        loadHighlights();
-
     }
 
 }
