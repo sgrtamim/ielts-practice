@@ -1,0 +1,87 @@
+{
+  "title": "The Economic Partnership Between Bees and Flowering Plants",
+  "time": 30,
+  "passage": "<h2>The Economic Partnership Between Bees and Flowering Plants</h2><p><b>A</b><br>Around 100 million years ago, during the Cretaceous Period, some hunting wasps gradually changed their feeding habits. Instead of collecting insects to provide protein for themselves and their young, they increasingly relied on pollen produced by flowering plants. As they travelled from one flower to another, pollen grains attached themselves to the insects' bodies and were transferred between plants of the same species. This accidental movement of pollen marked the beginning of a remarkable biological partnership. Over time, flowering plants evolved to produce larger quantities of pollen and sweet nectar, encouraging these early bees to visit them more frequently.</p><p><b>B</b><br>Today, bees remain among the world's most important pollinators. Many fruits, vegetables, nuts and oilseed crops depend on their activities to produce reliable harvests. Livestock farming also benefits because animals are often raised on plants that require insect pollination. As a result, a significant proportion of the food consumed by humans is linked, either directly or indirectly, to bees. Economists estimate that the financial contribution of bee pollination to global agriculture amounts to billions of dollars every year, greatly exceeding the commercial value of honey itself.</p><p><b>C</b><br>Although bees and flowers appear to benefit equally, their relationship is not entirely cooperative. Each side attempts to gain the greatest possible advantage while limiting its own costs. A useful way of understanding this interaction is to compare it with a competitive marketplace. Flowers compete with neighbouring plants by displaying bright colours, attractive scents and nutritious nectar to persuade bees to visit. However, they cannot afford to provide excessive rewards. If a bee gathers everything it needs from a single flower, it has little reason to continue visiting others, reducing the plant's chances of successful cross-pollination. Bees, meanwhile, must choose flowers that offer the highest rewards while using as little energy as possible during each foraging trip. The balance between these competing interests creates a stable but constantly negotiated partnership.</p><p><b>D</b><br>This idea resembles principles found in economics. In the eighteenth century, economist Adam Smith argued that competition between individuals could, under suitable conditions, produce an overall balance within society. Some modern researchers believe a similar principle can be observed in nature. For this reason, economists have joined botanists and entomologists in studying pollination systems. By examining how bees distribute their visits among different flowers, researchers hope to understand how natural ecosystems remain productive despite constant competition for resources.</p><p><b>E</b><br>Research into bee behaviour has practical value beyond academic curiosity. Conservation planners, for example, need accurate information about pollinators when protecting natural habitats. Tropical rainforests provide a good illustration. These forests contain an extraordinary variety of tree species, yet individual trees of the same species are often separated by considerable distances. Large bees are capable of travelling between these scattered trees, carrying pollen over long distances. Studies suggest that some species even develop regular flight routes, repeatedly visiting the same sequence of flowering trees. This behaviour helps maintain reproduction across wide areas of forest.</p><p><b>F</b><br>Understanding how far bees can travel has become increasingly important as forests are divided into smaller fragments through human activity. Conservation projects often focus on the movement of seeds, but successful reproduction depends equally on pollination. If isolated forest reserves are located beyond the normal flight range of their pollinators, many tree species may struggle to reproduce, even if mature trees remain. Determining the distance that different bee species can cover is therefore essential when planning protected areas that will remain ecologically sustainable.</p><p><b>G</b><br>The importance of bees extends far beyond agriculture. Most natural landscapes owe much of their diversity and appearance to flowering plants, many of which rely on insect pollination. By connecting plants through the transfer of pollen, bees support food production, maintain biodiversity and contribute to the stability of ecosystems around the world. Their role may often go unnoticed, but the health of both natural environments and human societies depends heavily on these remarkably efficient pollinators.</p>",
+  "questions": [
+    {
+      "number": 1,
+      "type": "gap",
+      "question": "The earliest bees are believed to have evolved from hunting wasps that gradually replaced insects with ________ as their main source of protein."
+    },
+    {
+      "number": 2,
+      "type": "gap",
+      "question": "During their visits to flowers, bees accidentally transferred pollen between plants, resulting in ________."
+    },
+    {
+      "number": 3,
+      "type": "gap",
+      "question": "Flowering plants later produced larger amounts of pollen and ________ to attract more visits from bees."
+    },
+    {
+      "number": 4,
+      "type": "gap",
+      "question": "Although bees and flowers rely on one another, each attempts to maximise its own ________ while keeping costs low."
+    },
+    {
+      "number": 5,
+      "type": "gap",
+      "question": "Bees try to obtain the greatest reward while using as little ________ as possible."
+    },
+    {
+      "number": 6,
+      "type": "gap",
+      "question": "Their relationship survives because of a series of ________ rather than complete cooperation."
+    },
+    {
+      "number": 7,
+      "type": "tfng",
+      "question": "Adam Smith believed that competition could eventually create balance within society."
+    },
+    {
+      "number": 8,
+      "type": "tfng",
+      "question": "Economists have shown greater interest in pollination research than botanists."
+    },
+    {
+      "number": 9,
+      "type": "tfng",
+      "question": "Conservation policies can benefit from a better understanding of the relationship between plants and their pollinators."
+    },
+    {
+      "number": 10,
+      "type": "tfng",
+      "question": "Trees of the same species are usually found growing close together in tropical rainforests."
+    },
+    {
+      "number": 11,
+      "type": "tfng",
+      "question": "Some large bees repeatedly follow similar routes when searching for flowers."
+    },
+    {
+      "number": 12,
+      "type": "tfng",
+      "question": "The movement of seeds alone is sufficient to determine the ideal size of a forest reserve."
+    },
+    {
+      "number": 13,
+      "type": "tfng",
+      "question": "Scientists have already identified the maximum flight distance of all long-distance bee species."
+    }
+  ],
+  "answers": [
+    "pollen",
+    "pollination",
+    "nectar",
+    "advantage",
+    "energy",
+    "compromises",
+    "TRUE",
+    "FALSE",
+    "TRUE",
+    "FALSE",
+    "TRUE",
+    "FALSE",
+    "FALSE"
+  ]
+}
