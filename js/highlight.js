@@ -11,8 +11,8 @@ let currentRange = null;
 // Show toolbar
 // -------------------------------
 
-document.addEventListener("mouseup", () => {
-
+document.addEventListener("selectionchange", () => {
+    
     const selection = window.getSelection();
 
     if (!selection.rangeCount) {
@@ -123,11 +123,9 @@ highlightBtn.addEventListener("mousedown", function(e){
 
     catch(err){
 
-        alert(
-            "Please select text inside one paragraph."
-        );
+    toolbar.style.display = "none";
 
-    }
+}
 
 });
 
@@ -162,5 +160,32 @@ function saveHighlights(){
         ).innerHTML
 
     );
+
+}
+
+function loadHighlights(){
+
+    const id =
+        new URLSearchParams(location.search).get("id") || "reading1";
+
+    const savedPassage =
+        localStorage.getItem("highlight_passage_" + id);
+
+    const savedQuestion =
+        localStorage.getItem("highlight_question_" + id);
+
+    if(savedPassage){
+
+        document.getElementById("passageContent").innerHTML =
+            savedPassage;
+
+    }
+
+    if(savedQuestion){
+
+        document.getElementById("questionContent").innerHTML =
+            savedQuestion;
+
+    }
 
 }
