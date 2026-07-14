@@ -165,28 +165,7 @@ async function loadTest(fileName) {
         document.getElementById("testTitle").textContent =
             testData.title;
 
-       const savedPassage = localStorage.getItem("highlight_" + fileName);
-
-if(savedPassage){
-
-    passage.innerHTML = savedPassage;
-
-}else{
-
-const savedPassage =
-localStorage.getItem("reading_highlight_passage");
-
-if(savedPassage){
-
-    passage.innerHTML = savedPassage;
-
-}else{
-
-    passage.innerHTML = testData.passage;
-
-}
-    
-}
+       passage.innerHTML = testData.passage;
 
         const selectedTime =
 Number(localStorage.getItem("readingTime"));
@@ -195,6 +174,8 @@ totalSeconds =
 (selectedTime || testData.time) * 60;
 
         buildQuestions();
+
+        loadHighlights();
 
         startTimer();
 
@@ -304,15 +285,6 @@ function buildQuestions() {
     });
 
     restoreAnswers();
-
-const savedQuestions =
-localStorage.getItem("reading_highlight_questions");
-
-if(savedQuestions){
-
-    questionContent.innerHTML = savedQuestions;
-
-}
     
 }
 
