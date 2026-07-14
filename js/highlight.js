@@ -14,9 +14,11 @@ let currentRange = null;
 // -------------------------------
 
 document.addEventListener("selectionchange", () => {
-    
-    const selection = window.getSelection();
 
+    console.log("Selection changed");
+
+    const selection = window.getSelection();
+    
     if (!selection.rangeCount) {
 
         toolbar.style.display = "none";
